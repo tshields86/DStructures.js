@@ -1,0 +1,50 @@
+{
+  "name": "structures.js",
+  "version": "1.0.0",
+  "description": "Data structures and algorithms written in JavaScript",
+  "author": "Travis Shields",
+  "main": "./src/index.js",
+  "files": [
+    "src/**/*.js"
+  ],
+  "scripts": {
+    "test": "jest src/",
+    "watch": "jest src/ --watch --coverage",
+    "coverage": "jest src/ --coverage && open coverage/lcov-report/index.html",
+    "lint": "npx eslint --fix --format codeframe src/",
+    "ci": "npx eslint src/ && jest src/ --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tshields86/Structures.js.git"
+  },
+  "keywords": [
+    "algorithms",
+    "computer science",
+    "cs",
+    "data structures",
+    "javascript",
+    "sorting algorithms",
+    "binary search tree",
+    "linked list",
+    "graph",
+    "priority queue",
+    "queue",
+    "stack",
+    "tree"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tshields86/Structures.js/issues"
+  },
+  "homepage": "https://github.com/tshields86/Structures.js#readme",
+  "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "eslint": "^6.0.1",
+    "eslint-config-airbnb-base": "14.1.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jest": "^22.7.1",
+    "husky": "^2.5.0",
+    "jest": "^24.8.0"
+  }
+}
