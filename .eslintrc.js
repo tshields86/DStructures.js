@@ -6,6 +6,7 @@ module.exports = {
   rules: {
     'arrow-parens': ['error', 'as-needed'],
     'no-multi-assign': 'off',
+    'no-param-reassign': [2, { 'props': false }],
     'no-plusplus': [0, { 'allowForLoopAfterthoughts': true }],
     'no-restricted-syntax': [0, 'ForOfStatement'],
     'no-underscore-dangle': 'off',
