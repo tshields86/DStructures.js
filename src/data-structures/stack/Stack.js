@@ -25,7 +25,7 @@ class Stack {
 
   /**
    * Removes and returns element from the stack.
-   * @return {Stack}
+   * @return {(*|null)}
    */
   pop() {
     return this.linkedList.removeFirst();

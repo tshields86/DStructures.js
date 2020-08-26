@@ -23,7 +23,7 @@ class Queue {
 
   /**
    * Removes and returns element from the queue.
-   * @return {Queue}
+   * @return {(*|null)}
    */
   dequeue() {
     return this.linkedList.removeFirst();
