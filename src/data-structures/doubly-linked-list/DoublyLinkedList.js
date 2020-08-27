@@ -324,5 +324,4 @@ DoublyLinkedList.prototype.push = DoublyLinkedList.prototype.addLast;
 DoublyLinkedList.prototype.shift = DoublyLinkedList.prototype.removeFirst;
 DoublyLinkedList.prototype.pop = DoublyLinkedList.prototype.removeLast;
 
-
 module.exports = DoublyLinkedList;
