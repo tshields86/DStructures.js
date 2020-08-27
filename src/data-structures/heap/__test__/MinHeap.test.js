@@ -73,11 +73,11 @@ describe('MinHeap', () => {
 
   describe('#peek', () => {
     it('should peek an element from the heap', () => {
-      minHeap.add(2);
+      minHeap.offer(2);
       expect(minHeap.peek()).toBe(2);
-      minHeap.add(1);
+      minHeap.offer(1);
       expect(minHeap.peek()).toBe(1);
-      minHeap.add(0);
+      minHeap.offer(0);
       expect(minHeap.peek()).toBe(0);
     });
 

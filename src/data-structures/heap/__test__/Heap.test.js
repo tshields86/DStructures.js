@@ -74,11 +74,11 @@ describe('Heap', () => {
 
     describe('#peek', () => {
       it('should peek an element from the heap', () => {
-        heap.add(2);
+        heap.offer(2);
         expect(heap.peek()).toBe(2);
-        heap.add(1);
+        heap.offer(1);
         expect(heap.peek()).toBe(1);
-        heap.add(0);
+        heap.offer(0);
         expect(heap.peek()).toBe(0);
       });
 
@@ -200,11 +200,11 @@ describe('Heap', () => {
 
     describe('#peek', () => {
       it('should peek an element from the heap', () => {
-        heap.add(0);
+        heap.offer(0);
         expect(heap.peek()).toBe(0);
-        heap.add(1);
+        heap.offer(1);
         expect(heap.peek()).toBe(1);
-        heap.add(2);
+        heap.offer(2);
         expect(heap.peek()).toBe(2);
       });
 

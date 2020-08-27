@@ -73,11 +73,11 @@ describe('MaxHeap', () => {
 
   describe('#peek', () => {
     it('should peek an element from the heap', () => {
-      maxHeap.add(0);
+      maxHeap.offer(0);
       expect(maxHeap.peek()).toBe(0);
-      maxHeap.add(1);
+      maxHeap.offer(1);
       expect(maxHeap.peek()).toBe(1);
-      maxHeap.add(2);
+      maxHeap.offer(2);
       expect(maxHeap.peek()).toBe(2);
     });
 

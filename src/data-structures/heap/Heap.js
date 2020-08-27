@@ -26,7 +26,7 @@ class Heap {
   }
 
   /**
-   * Removes and returns the head of the heap.
+   * Removes and returns the top of the heap.
    * @return {(*|null)}
    */
   poll() {
