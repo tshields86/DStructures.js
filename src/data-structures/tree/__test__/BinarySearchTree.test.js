@@ -1,6 +1,7 @@
 const BinarySearchTree = require('../BinarySearchTree');
 
 const ITERABLE = [3, 1, 5, 0, 2, 4];
+const MULTIPLICITY = 'multiplicity';
 
 describe('BinarySearchTree', () => {
   it('should create empty BST', () => {
@@ -43,7 +44,7 @@ describe('BinarySearchTree', () => {
     it('should increase the meta multiplicity if value is equal to itself', () => {
       binarySearchTree.insert(1);
       expect(binarySearchTree.root.left.value).toEqual(1);
-      expect(binarySearchTree.root.left.meta.multiplicity).toEqual(2);
+      expect(binarySearchTree.root.left.meta.get(MULTIPLICITY)).toEqual(2);
       expect(binarySearchTree.size).toBe(4);
     });
   });
@@ -67,9 +68,9 @@ describe('BinarySearchTree', () => {
 
     it('should decrease the meta multiplicity if greater than 1', () => {
       binarySearchTree.insert(3);
-      expect(binarySearchTree.root.meta.multiplicity).toEqual(2);
+      expect(binarySearchTree.root.meta.get(MULTIPLICITY)).toEqual(2);
       binarySearchTree.remove(3);
-      expect(binarySearchTree.root.meta.multiplicity).toEqual(1);
+      expect(binarySearchTree.root.meta.get(MULTIPLICITY)).toEqual(1);
     });
 
     describe('it is a leaf node', () => {
@@ -128,7 +129,7 @@ describe('BinarySearchTree', () => {
     });
   });
 
-  describe('#toArray', () => {
+  describe('#fromArray', () => {
     it('should add nodes to BST from array', () => {
       const binarySearchTree2 = new BinarySearchTree();
       binarySearchTree2.fromArray(ITERABLE);
@@ -138,66 +139,31 @@ describe('BinarySearchTree', () => {
 
   describe('#bfs', () => {
     it('should perform a bfs iteration over tree', () => {
-      const array = [];
-      const bfsIterator = binarySearchTree.bfs();
-
-      for (const node of bfsIterator) {
-        array.push(node.value);
-      }
-
-      expect(array).toEqual([3, 1, 5, 0, 2, 4]);
+      expect(Array.from(binarySearchTree.bfs())).toEqual([3, 1, 5, 0, 2, 4]);
     });
   });
 
   describe('#dfs', () => {
     it('should perform a dfs iteration over tree', () => {
-      const array = [];
-      const dfsIterator = binarySearchTree.dfs();
-
-      for (const node of dfsIterator) {
-        array.push(node.value);
-      }
-
-      expect(array).toEqual([3, 1, 0, 2, 5, 4]);
+      expect(Array.from(binarySearchTree.dfs())).toEqual([3, 1, 0, 2, 5, 4]);
     });
   });
 
   describe('#inOrderTraversal', () => {
     it('should perform a inOrderTraversal iteration over tree', () => {
-      const array = [];
-      const inOrderTraversalIterator = binarySearchTree.inOrderTraversal();
-
-      for (const node of inOrderTraversalIterator) {
-        array.push(node.value);
-      }
-
-      expect(array).toEqual([0, 1, 2, 3, 4, 5]);
+      expect(Array.from(binarySearchTree.inOrderTraversal())).toEqual([0, 1, 2, 3, 4, 5]);
     });
   });
 
   describe('#preOrderTraversal', () => {
     it('should perform a preOrderTraversal iteration over tree', () => {
-      const array = [];
-      const preOrderTraversalIterator = binarySearchTree.preOrderTraversal();
-
-      for (const node of preOrderTraversalIterator) {
-        array.push(node.value);
-      }
-
-      expect(array).toEqual([3, 1, 0, 2, 5, 4]);
+      expect(Array.from(binarySearchTree.preOrderTraversal())).toEqual([3, 1, 0, 2, 5, 4]);
     });
   });
 
   describe('#postOrderTraversal', () => {
     it('should perform a postOrderTraversal iteration over tree', () => {
-      const array = [];
-      const postOrderTraversalIterator = binarySearchTree.postOrderTraversal();
-
-      for (const node of postOrderTraversalIterator) {
-        array.push(node.value);
-      }
-
-      expect(array).toEqual([0, 2, 1, 4, 5, 3]);
+      expect(Array.from(binarySearchTree.postOrderTraversal())).toEqual([0, 2, 1, 4, 5, 3]);
     });
   });
 });

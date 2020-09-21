@@ -1,5 +1,7 @@
 const BinarySearchTreeNode = require('../BinarySearchTreeNode');
 
+const MULTIPLICITY = 'multiplicity';
+
 describe('BinarySearchTreeNode', () => {
   it('should create BST node with value', () => {
     const node = new BinarySearchTreeNode('foo');
@@ -34,7 +36,7 @@ describe('BinarySearchTreeNode', () => {
 
     it('should increase the meta multiplicity if value is equal to itself', () => {
       node3.insert(3);
-      expect(node3.meta.multiplicity).toEqual(2);
+      expect(node3.meta.get(MULTIPLICITY)).toEqual(2);
     });
   });
 
@@ -62,9 +64,9 @@ describe('BinarySearchTreeNode', () => {
 
     it('should decrease the meta multiplicity if greater than 1', () => {
       node3.insert(3);
-      expect(node3.meta.multiplicity).toEqual(2);
+      expect(node3.meta.get(MULTIPLICITY)).toEqual(2);
       node3.remove(3);
-      expect(node3.meta.multiplicity).toEqual(1);
+      expect(node3.meta.get(MULTIPLICITY)).toEqual(1);
     });
 
     describe('it is a leaf node', () => {

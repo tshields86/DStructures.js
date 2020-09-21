@@ -62,8 +62,8 @@ class BinarySearchTree {
 
     while (!queue.isEmpty()) {
       const node = queue.dequeue();
-      const { left, right } = node;
-      yield node;
+      const { value, left, right } = node;
+      yield value;
 
       if (left) queue.enqueue(left);
       if (right) queue.enqueue(right);
@@ -80,8 +80,8 @@ class BinarySearchTree {
 
     while (!stack.isEmpty()) {
       const node = stack.pop();
-      const { left, right } = node;
-      yield node;
+      const { value, left, right } = node;
+      yield value;
 
       if (right) stack.push(right);
       if (left) stack.push(left);
@@ -94,9 +94,10 @@ class BinarySearchTree {
    * @yields {BinaryTreeNode}
    */
   * inOrderTraversal(node = this.root) {
-    if (node && node.left) yield* this.inOrderTraversal(node.left);
-    yield node;
-    if (node && node.right) yield* this.inOrderTraversal(node.right);
+    const { value, left, right } = node;
+    if (left) yield* this.inOrderTraversal(left);
+    yield value;
+    if (right) yield* this.inOrderTraversal(right);
   }
 
   /**
@@ -105,9 +106,10 @@ class BinarySearchTree {
    * @yields {BinaryTreeNode}
    */
   * preOrderTraversal(node = this.root) {
-    yield node;
-    if (node.left) yield* this.preOrderTraversal(node.left);
-    if (node.right) yield* this.preOrderTraversal(node.right);
+    const { value, left, right } = node;
+    yield value;
+    if (left) yield* this.preOrderTraversal(left);
+    if (right) yield* this.preOrderTraversal(right);
   }
 
   /**
@@ -116,9 +118,10 @@ class BinarySearchTree {
    * @yields {BinaryTreeNode}
    */
   * postOrderTraversal(node = this.root) {
-    if (node.left) yield* this.postOrderTraversal(node.left);
-    if (node.right) yield* this.postOrderTraversal(node.right);
-    yield node;
+    const { value, left, right } = node;
+    if (left) yield* this.postOrderTraversal(left);
+    if (right) yield* this.postOrderTraversal(right);
+    yield value;
   }
 
   /**
@@ -136,14 +139,7 @@ class BinarySearchTree {
    * @return {array}
    */
   toArray() {
-    const array = [];
-    const inOrderIterator = this.inOrderTraversal();
-
-    for (const node of inOrderIterator) {
-      array.push(node.value);
-    }
-
-    return array;
+    return Array.from(this.inOrderTraversal());
   }
 }
 

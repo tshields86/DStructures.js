@@ -1,6 +1,3 @@
-const LEFT = Symbol('left');
-const RIGHT = Symbol('right');
-
 /**
  * Binary Tree Node
  */
@@ -159,8 +156,5 @@ class BinaryTreeNode {
     targetNode.setRight(sourceNode.right);
   }
 }
-
-BinaryTreeNode.RIGHT = RIGHT;
-BinaryTreeNode.LEFT = LEFT;
 
 module.exports = BinaryTreeNode;

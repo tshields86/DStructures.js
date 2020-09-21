@@ -1,5 +1,7 @@
 const BinaryTreeNode = require('./BinaryTreeNode');
 
+const MULTIPLICITY = 'multiplicity';
+
 /**
  * Binary Search Tree Node
  */
@@ -40,7 +42,8 @@ class BinarySearchTreeNode extends BinaryTreeNode {
       return newNode;
     }
 
-    this.meta.multiplicity = (this.meta.multiplicity || 1) + 1;
+    const multiplicity = this.meta.get(MULTIPLICITY);
+    this.meta.set(MULTIPLICITY, (multiplicity || 1) + 1);
 
     return this;
   }
@@ -54,8 +57,9 @@ class BinarySearchTreeNode extends BinaryTreeNode {
 
     if (!nodeToRemove) return false;
 
-    if (nodeToRemove.meta.multiplicity && nodeToRemove.meta.multiplicity > 1) {
-      nodeToRemove.meta.multiplicity--;
+    const multiplicity = nodeToRemove.meta.get(MULTIPLICITY);
+    if (multiplicity && multiplicity > 1) {
+      nodeToRemove.meta.set(MULTIPLICITY, multiplicity - 1);
       return true;
     }
 
