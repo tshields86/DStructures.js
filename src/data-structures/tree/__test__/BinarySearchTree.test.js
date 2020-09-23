@@ -139,31 +139,31 @@ describe('BinarySearchTree', () => {
 
   describe('#bfs', () => {
     it('should perform a bfs iteration over tree', () => {
-      expect(Array.from(binarySearchTree.bfs())).toEqual([3, 1, 5, 0, 2, 4]);
+      expect([...binarySearchTree.bfs()]).toEqual([3, 1, 5, 0, 2, 4]);
     });
   });
 
   describe('#dfs', () => {
     it('should perform a dfs iteration over tree', () => {
-      expect(Array.from(binarySearchTree.dfs())).toEqual([3, 1, 0, 2, 5, 4]);
+      expect([...binarySearchTree.dfs()]).toEqual([3, 1, 0, 2, 5, 4]);
     });
   });
 
   describe('#inOrderTraversal', () => {
     it('should perform a inOrderTraversal iteration over tree', () => {
-      expect(Array.from(binarySearchTree.inOrderTraversal())).toEqual([0, 1, 2, 3, 4, 5]);
+      expect([...binarySearchTree.inOrderTraversal()]).toEqual([0, 1, 2, 3, 4, 5]);
     });
   });
 
   describe('#preOrderTraversal', () => {
     it('should perform a preOrderTraversal iteration over tree', () => {
-      expect(Array.from(binarySearchTree.preOrderTraversal())).toEqual([3, 1, 0, 2, 5, 4]);
+      expect([...binarySearchTree.preOrderTraversal()]).toEqual([3, 1, 0, 2, 5, 4]);
     });
   });
 
   describe('#postOrderTraversal', () => {
     it('should perform a postOrderTraversal iteration over tree', () => {
-      expect(Array.from(binarySearchTree.postOrderTraversal())).toEqual([0, 2, 1, 4, 5, 3]);
+      expect([...binarySearchTree.postOrderTraversal()]).toEqual([0, 2, 1, 4, 5, 3]);
     });
   });
 });

@@ -294,6 +294,19 @@ class LinkedList {
     }
   }
 
+  /**
+   * Iterate through the list until the callback returns a truthy value.
+   * @param {function} callback
+   * @return {*}
+   */
+  find(callback) {
+    for (const node of this) {
+      const result = callback(node);
+      if (result !== null) return result;
+    }
+    return undefined;
+  }
+
   * [Symbol.iterator]() {
     let node = this.head;
     while (node) {

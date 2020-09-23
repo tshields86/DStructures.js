@@ -406,15 +406,36 @@ describe('LinkedList', () => {
     });
   });
 
+  describe('#find', () => {
+    it('should return result of callback if is not null', () => {
+      linkedList = new LinkedList(ITERABLE);
+
+      const callback = (node => {
+        if (node % 2 !== 0) return null;
+        return node;
+      });
+
+      expect(linkedList.find(callback)).toBe(2);
+    });
+
+    it('should return undefined if result of callback is null', () => {
+      linkedList = new LinkedList(ITERABLE);
+
+      const callback = (node => {
+        if (typeof node === 'number') return null;
+        return node;
+      });
+
+      expect(linkedList.find(callback)).toBeUndefined();
+    });
+  });
+
   describe('#[Symbol.iterator]', () => {
-    it('should iterate through list and yeild each node value', () => {
+    it('should iterate through list and yield each node value', () => {
       linkedList = new LinkedList(ITERABLE);
       expect(linkedList.toString()).toBe('1,2,3');
 
-      let i = 0;
-      for (const value of linkedList) {
-        expect(value).toBe(++i);
-      }
+      expect([...linkedList]).toEqual([1, 2, 3]);
     });
   });
 });
