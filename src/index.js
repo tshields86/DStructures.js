@@ -13,9 +13,11 @@ const Stack = require('./data-structures/stack/Stack');
 const Queue = require('./data-structures/queue/Queue');
 
 /* algorithms */
+const dijkstra = require('./algorithms/graph/dijkstra/dijkstra');
 
 module.exports = {
   BinarySearchTree,
+  dijkstra,
   DoublyLinkedList,
   Graph,
   HashMap,

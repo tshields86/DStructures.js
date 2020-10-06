@@ -16,7 +16,7 @@ This repository consists of data structures and algorithms written in JavaScript
 * Queue: [Queue](src/data-structures/queue/README.md)
 
 ## Algorithms
-*
+* dijkstra: [dijkstra](src/algorithms/graph/dijkstra/README.md)
 
 ## Installation
 
@@ -31,6 +31,7 @@ Then you can import it into your programs:
 ```js
 const {
   BinarySearchTree,
+  dijkstra,
   DoublyLinkedList,
   Graph,
   HashMap,
@@ -38,7 +39,7 @@ const {
   Heap,
   LinkedList,
   MaxHeap,
-  MinHeap
+  MinHeap,
   PriorityQueue,
   Queue,
   Stack
