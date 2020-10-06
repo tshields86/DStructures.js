@@ -1,11 +1,18 @@
 const HashMap = require('../HashMap');
 
+const ITERABLE = [['foo', 1], ['bar', 2], ['baz', 3]];
+
 describe('HashMap', () => {
   let hashMap;
 
   it('should create empty hash map', () => {
     hashMap = new HashMap();
     expect(hashMap.size).toBe(0);
+  });
+
+  it('should create hash map from iterable', () => {
+    hashMap = new HashMap(ITERABLE);
+    expect([...hashMap]).toEqual(ITERABLE);
   });
 
   describe('#set', () => {
@@ -46,10 +53,7 @@ describe('HashMap', () => {
   });
 
   beforeEach(() => {
-    hashMap = new HashMap();
-    hashMap.set('foo', 1);
-    hashMap.set('bar', 2);
-    hashMap.set('baz', 3);
+    hashMap = new HashMap(ITERABLE);
   });
 
   describe('#size', () => {
@@ -211,13 +215,13 @@ describe('HashMap', () => {
 
   describe('#entries', () => {
     it('should iterate through hash map and yield each entry', () => {
-      expect([...hashMap.entries()]).toEqual([['foo', 1], ['bar', 2], ['baz', 3]]);
+      expect([...hashMap.entries()]).toEqual(ITERABLE);
     });
   });
 
   describe('#[Symbol.iterator]', () => {
     it('should iterate through hash map and yield each entry', () => {
-      expect([...hashMap]).toEqual([['foo', 1], ['bar', 2], ['baz', 3]]);
+      expect([...hashMap]).toEqual(ITERABLE);
     });
   });
 });

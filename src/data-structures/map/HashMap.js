@@ -12,14 +12,21 @@ const FNV_PRIME = 16777619;
  */
 class HashMap {
   /**
+   * @param {*} [iterable] - Iterable to populate the hash map.
    * @param {number} [initialCapacity] - Initial capacity of the hash map.
    * @param {number} [loadFactor] - Load factor of the hash map.
    */
-  constructor(initialCapacity = DEFAULT_CAPACITY, loadFactor = DEFAULT_LOAD_SIZE) {
+  constructor(
+    iterable = null,
+    initialCapacity = DEFAULT_CAPACITY,
+    loadFactor = DEFAULT_LOAD_SIZE,
+  ) {
     this.initialCapacity = initialCapacity;
     this.loadFactor = loadFactor;
     this.encoder = new TextEncoder();
     this.reset();
+
+    if (iterable) Array.from(iterable, ([key, value]) => this.set(key, value));
   }
 
   /**
@@ -104,7 +111,7 @@ class HashMap {
 
   /**
    * @param {*} key
-   * @return {*}
+   * @return {(*|undefined)}
    */
   get(key) {
     const { entry } = this.getEntry(key);
@@ -158,11 +165,7 @@ class HashMap {
    */
   rehash(newBucketSize = Math.max(this.size, this.buckets.length) * 2) {
     const newCapacity = nextPrime(newBucketSize);
-    const newMap = new HashMap(newCapacity);
-
-    for (const key of this.keys()) {
-      newMap.set(key, this.get(key));
-    }
+    const newMap = new HashMap(this, newCapacity);
 
     const newArrayKeys = [...newMap.keys()];
 
