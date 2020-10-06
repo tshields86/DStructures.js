@@ -5,7 +5,7 @@ const HashMap = require('../map/HashMap');
  */
 class HashSet {
   /**
-   * @param {*} [iterable] - Iterable to populate the list.
+   * @param {*} [iterable] - Iterable to populate the hash set.
    */
   constructor(iterable = null) {
     this.hashMap = new HashMap();
