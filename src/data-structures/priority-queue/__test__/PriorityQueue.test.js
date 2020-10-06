@@ -48,8 +48,8 @@ describe('PriorityQueue', () => {
 
     describe('#poll', () => {
       it('should poll an element from the priority queue', () => {
-        priorityQueue.add('foo', 1);
-        priorityQueue.add('baz', 0);
+        priorityQueue.offer('foo', 1);
+        priorityQueue.offer('baz', 0);
         expect(priorityQueue.poll()).toBe('baz');
         expect(priorityQueue.size).toBe(1);
         expect(priorityQueue.container).toEqual([{ value: 'foo', priority: 1 }]);
@@ -84,6 +84,22 @@ describe('PriorityQueue', () => {
 
       it('should return null if the priority queue is empty', () => {
         expect(priorityQueue.peek()).toBe(null);
+      });
+    });
+
+    describe('#changePriority', () => {
+      it('should change the priority of an element in the priority queue', () => {
+        priorityQueue
+          .offer('bar', 2)
+          .offer('foo', 1)
+          .offer('baz', 0);
+        expect(priorityQueue.peek()).toBe('baz');
+        priorityQueue.changePriority('baz', 3);
+        expect(priorityQueue.peek()).toBe('foo');
+        priorityQueue.changePriority('foo', 4);
+        expect(priorityQueue.peek()).toBe('bar');
+        priorityQueue.changePriority('baz', 0);
+        expect(priorityQueue.peek()).toBe('baz');
       });
     });
 
@@ -186,8 +202,8 @@ describe('PriorityQueue', () => {
       });
 
       it('should poll an element from the priority queue (alias remove)', () => {
-        priorityQueue.add('foo', 1);
-        priorityQueue.add('baz', 0);
+        priorityQueue.offer('foo', 1);
+        priorityQueue.offer('baz', 0);
         expect(priorityQueue.remove()).toBe('foo');
         expect(priorityQueue.size).toBe(1);
         expect(priorityQueue.container).toEqual([{ value: 'baz', priority: 0 }]);
@@ -210,6 +226,22 @@ describe('PriorityQueue', () => {
 
       it('should return null if the priority queue is empty', () => {
         expect(priorityQueue.peek()).toBe(null);
+      });
+    });
+
+    describe('#changePriority', () => {
+      it('should change the priority of an element in the priority queue', () => {
+        priorityQueue
+          .offer('baz', 0)
+          .offer('foo', 1)
+          .offer('bar', 2);
+        expect(priorityQueue.peek()).toBe('bar');
+        priorityQueue.changePriority('baz', 3);
+        expect(priorityQueue.peek()).toBe('baz');
+        priorityQueue.changePriority('foo', 4);
+        expect(priorityQueue.peek()).toBe('foo');
+        priorityQueue.changePriority('foo', 1);
+        expect(priorityQueue.peek()).toBe('baz');
       });
     });
 

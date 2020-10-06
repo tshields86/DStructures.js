@@ -40,6 +40,30 @@ class PriorityQueue extends Heap {
     if (super.isEmpty()) return null;
     return this.container[0].value;
   }
+
+  /**
+   * Change priority of an element in a queue.
+   * @param {*} value - element to re-prioritize.
+   * @param {number} priority - new priority.
+   * @return {PriorityQueue}
+   */
+  changePriority(value, priority) {
+    this.removeValue(value, node => node.value);
+    this.offer(value, priority);
+    return this;
+  }
+
+  /**
+   * Finds all indices of an element.
+   * @param {*} value
+   * @return {array}
+   */
+  find(value) {
+    return this.container.reduce((indices, node, i) => {
+      if (value === node.value) indices.push(i);
+      return indices;
+    }, []);
+  }
 }
 
 /* Aliases */
