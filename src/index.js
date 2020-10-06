@@ -1,6 +1,7 @@
 /* data structures */
 const BinarySearchTree = require('./data-structures/tree/BinarySearchTree');
 const DoublyLinkedList = require('./data-structures/doubly-linked-list/DoublyLinkedList');
+const Graph = require('./data-structures/graph/Graph');
 const HashMap = require('./data-structures/map/HashMap');
 const HashSet = require('./data-structures/set/HashSet');
 const Heap = require('./data-structures/heap/Heap');
@@ -16,6 +17,7 @@ const Queue = require('./data-structures/queue/Queue');
 module.exports = {
   BinarySearchTree,
   DoublyLinkedList,
+  Graph,
   HashMap,
   HashSet,
   Heap,
