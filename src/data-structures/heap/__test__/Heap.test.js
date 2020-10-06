@@ -87,6 +87,52 @@ describe('Heap', () => {
       });
     });
 
+    describe('#removeValue', () => {
+      it('should remove an element from the heap', () => {
+        heap
+          .offer(3)
+          .offer(12)
+          .offer(10)
+          .offer(11)
+          .offer(11);
+
+        expect(heap.container).toEqual([3, 11, 10, 12, 11]);
+        expect(heap.removeValue(3).container).toEqual([10, 11, 11, 12]);
+        expect(heap.peek()).toEqual(10);
+        expect(heap.size).toBe(4);
+        expect(heap.removeValue(11).container).toEqual([10, 12]);
+        expect(heap.peek()).toEqual(10);
+        expect(heap.size).toBe(2);
+      });
+    });
+
+    describe('#find', () => {
+      it('should all indices of an element in the heap', () => {
+        heap
+          .offer(3)
+          .offer(12)
+          .offer(10)
+          .offer(11)
+          .offer(11);
+
+        expect(heap.container).toEqual([3, 11, 10, 12, 11]);
+        expect(heap.find(3)).toEqual([0]);
+        expect(heap.find(11)).toEqual([1, 4]);
+        expect(heap.find(5)).toEqual([]);
+      });
+    });
+
+    describe('#has', () => {
+      it('should all indices of an element in the heap', () => {
+        heap
+          .offer(1)
+          .offer(2);
+
+        expect(heap.has(1)).toBeTruthy();
+        expect(heap.has(3)).toBeFalsy();
+      });
+    });
+
     describe('#size', () => {
       it('should return the number of elements in the heap', () => {
         expect(heap.size).toBe(0);
@@ -210,6 +256,52 @@ describe('Heap', () => {
 
       it('should return null if the heap is empty', () => {
         expect(heap.peek()).toBe(null);
+      });
+    });
+
+    describe('#removeValue', () => {
+      it('should remove an element from the heap', () => {
+        heap
+          .offer(3)
+          .offer(12)
+          .offer(10)
+          .offer(11)
+          .offer(11);
+
+        expect(heap.container).toEqual([12, 11, 10, 3, 11]);
+        expect(heap.removeValue(12).container).toEqual([11, 11, 10, 3]);
+        expect(heap.peek()).toEqual(11);
+        expect(heap.size).toBe(4);
+        expect(heap.removeValue(11).container).toEqual([10, 3]);
+        expect(heap.peek()).toEqual(10);
+        expect(heap.size).toBe(2);
+      });
+    });
+
+    describe('#find', () => {
+      it('should all indices of an element in the heap', () => {
+        heap
+          .offer(3)
+          .offer(12)
+          .offer(10)
+          .offer(11)
+          .offer(11);
+
+        expect(heap.container).toEqual([12, 11, 10, 3, 11]);
+        expect(heap.find(3)).toEqual([3]);
+        expect(heap.find(11)).toEqual([1, 4]);
+        expect(heap.find(5)).toEqual([]);
+      });
+    });
+
+    describe('#has', () => {
+      it('should all indices of an element in the heap', () => {
+        heap
+          .offer(1)
+          .offer(2);
+
+        expect(heap.has(1)).toBeTruthy();
+        expect(heap.has(3)).toBeFalsy();
       });
     });
 

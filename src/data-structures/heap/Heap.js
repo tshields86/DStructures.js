@@ -1,5 +1,9 @@
 const { swap } = require('../../utils/utils');
 
+const getParentIdx = i => Math.ceil(i / 2 - 1);
+const getLeftIdx = i => 2 * i + 1;
+const getRightIdx = i => 2 * i + 2;
+
 /**
  * Heap
  */
@@ -48,6 +52,58 @@ class Heap {
   }
 
   /**
+   * Removes all occurrences of an element from the heap.
+   * @param {*} value
+   * @return {Heap}
+   */
+  removeValue(value) {
+    const numberOfItemsToRemove = this.find(value).length;
+
+    for (let iteration = 0; iteration < numberOfItemsToRemove; iteration += 1) {
+      const indexToRemove = this.find(value).pop();
+
+      if (indexToRemove === this.size - 1) {
+        this.container.pop();
+        this.size--;
+      } else {
+        this.container[indexToRemove] = this.container.pop();
+        this.size--;
+
+        const parent = this.container[getParentIdx(indexToRemove)];
+        const hasLeft = getLeftIdx(indexToRemove) < this.size;
+        if (hasLeft && !parent) {
+          this.heapifyDown(indexToRemove);
+        } else {
+          this.heapifyUp(indexToRemove);
+        }
+      }
+    }
+
+    return this;
+  }
+
+  /**
+   * Finds all indices of an element.
+   * @param {*} value
+   * @return {array}
+   */
+  find(value) {
+    return this.container.reduce((indices, currValue, i) => {
+      if (value === currValue) indices.push(i);
+      return indices;
+    }, []);
+  }
+
+  /**
+   * Determines if heap has an element.
+   * @param {*} value
+   * @return {boolean}
+   */
+  has(value) {
+    return this.find(value).length > 0;
+  }
+
+  /**
    * Returns true if the heap is empty.
    * @return {boolean}
    */
@@ -67,11 +123,10 @@ class Heap {
 
   /**
    * If out of order, move element upwards in the heap.
+   * @param {number} [startIdx]
    */
-  heapifyUp() {
-    const getParentIdx = i => Math.ceil(i / 2 - 1);
-
-    let idx = this.size - 1;
+  heapifyUp(startIdx) {
+    let idx = startIdx || this.size - 1;
     let parentIdx = getParentIdx(idx);
     while (parentIdx >= 0 && this.compare(parentIdx, idx) > 0) {
       swap(this.container, parentIdx, idx);
@@ -82,14 +137,13 @@ class Heap {
 
   /**
    * If out of order, move element downwards in the heap.
+   * @param {number} [startIdx]
    */
-  heapifyDown() {
-    const getLeftIdx = i => 2 * i + 1;
-    const getRightIdx = i => 2 * i + 2;
+  heapifyDown(startIdx = 0) {
     const getTopChildIdx = i => (getRightIdx(i) < this.size
       && this.compare(getLeftIdx(i), getRightIdx(i)) > 0 ? getRightIdx(i) : getLeftIdx(i));
 
-    let idx = 0;
+    let idx = startIdx;
     while (getLeftIdx(idx) < this.size && this.compare(idx, getTopChildIdx(idx)) > 0) {
       const next = getTopChildIdx(idx);
       swap(this.container, idx, next);

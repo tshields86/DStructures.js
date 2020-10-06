@@ -86,6 +86,52 @@ describe('MinHeap', () => {
     });
   });
 
+  describe('#removeValue', () => {
+    it('should remove an element from the heap', () => {
+      minHeap
+        .offer(3)
+        .offer(12)
+        .offer(10)
+        .offer(11)
+        .offer(11);
+
+      expect(minHeap.container).toEqual([3, 11, 10, 12, 11]);
+      expect(minHeap.removeValue(3).container).toEqual([10, 11, 11, 12]);
+      expect(minHeap.peek()).toEqual(10);
+      expect(minHeap.size).toBe(4);
+      expect(minHeap.removeValue(11).container).toEqual([10, 12]);
+      expect(minHeap.peek()).toEqual(10);
+      expect(minHeap.size).toBe(2);
+    });
+  });
+
+  describe('#find', () => {
+    it('should all indices of an element in the heap', () => {
+      minHeap
+        .offer(3)
+        .offer(12)
+        .offer(10)
+        .offer(11)
+        .offer(11);
+
+      expect(minHeap.container).toEqual([3, 11, 10, 12, 11]);
+      expect(minHeap.find(3)).toEqual([0]);
+      expect(minHeap.find(11)).toEqual([1, 4]);
+      expect(minHeap.find(5)).toEqual([]);
+    });
+  });
+
+  describe('#has', () => {
+    it('should all indices of an element in the heap', () => {
+      minHeap
+        .offer(1)
+        .offer(2);
+
+      expect(minHeap.has(1)).toBeTruthy();
+      expect(minHeap.has(3)).toBeFalsy();
+    });
+  });
+
   describe('#size', () => {
     it('should return the number of elements in the heap', () => {
       expect(minHeap.size).toBe(0);
