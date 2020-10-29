@@ -63,7 +63,7 @@ describe('BinarySearchTree', () => {
 
   describe('#remove', () => {
     it('should return false if value does not exist', () => {
-      expect(binarySearchTree.remove(10)).toBeFalsy();
+      expect(binarySearchTree.remove(10)).toBe(false);
     });
 
     it('should decrease the meta multiplicity if greater than 1', () => {
@@ -75,21 +75,21 @@ describe('BinarySearchTree', () => {
 
     describe('it is a leaf node', () => {
       it('should remove node if it has a parent', () => {
-        expect(binarySearchTree.remove(0)).toBeTruthy();
+        expect(binarySearchTree.remove(0)).toBe(true);
         expect(binarySearchTree.root.left.left).toBeNull();
       });
 
       it('should set value to null if it does not have a parent', () => {
         const binarySearchTree2 = new BinarySearchTree();
         binarySearchTree2.insert(10);
-        expect(binarySearchTree2.remove(10)).toBeTruthy();
+        expect(binarySearchTree2.remove(10)).toBe(true);
         expect(binarySearchTree2.root.value).toBeNull();
       });
     });
 
     describe('it has both left and right child nodes', () => {
       it('should remove node and restructure tree', () => {
-        expect(binarySearchTree.remove(1)).toBeTruthy();
+        expect(binarySearchTree.remove(1)).toBe(true);
         expect(binarySearchTree.root.left.value).toBe(2);
         expect(binarySearchTree.root.left.left.value).toBe(0);
       });
@@ -97,7 +97,7 @@ describe('BinarySearchTree', () => {
 
     describe('it has only one child node', () => {
       it('should replace child node with itself', () => {
-        expect(binarySearchTree.remove(5)).toBeTruthy();
+        expect(binarySearchTree.remove(5)).toBe(true);
         expect(binarySearchTree.root.right.value).toBe(4);
       });
     });
@@ -119,7 +119,7 @@ describe('BinarySearchTree', () => {
     });
 
     it('should return null if value does not exist', () => {
-      expect(binarySearchTree.find(10)).toBeFalsy();
+      expect(binarySearchTree.find(10)).toBeNull();
     });
   });
 

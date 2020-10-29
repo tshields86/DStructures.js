@@ -12,10 +12,6 @@ class DoublyLinkedListNode {
     this.next = next;
     this.prev = prev;
   }
-
-  toString(callback) {
-    return callback ? callback(this.value) : `${this.value}`;
-  }
 }
 
 module.exports = DoublyLinkedListNode;

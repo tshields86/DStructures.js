@@ -253,16 +253,6 @@ class LinkedList {
   }
 
   /**
-   * Returns a string of all the elements in the list.
-   * @param {function} callback
-   * @return {string}
-   */
-  toString(callback) {
-    return this.toArrayNodes()
-      .map(node => node.toString(callback)).toString();
-  }
-
-  /**
    * Returns the list in reverse order.
    * @return {LinkedList}
    */

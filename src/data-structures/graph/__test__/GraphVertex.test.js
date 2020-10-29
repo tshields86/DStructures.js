@@ -22,7 +22,7 @@ describe('GraphVertex', () => {
       expect(vertex1.adjacents.size).toBe(0);
       vertex1.addAdjacent(vertex2);
       expect(vertex1.adjacents.size).toBe(1);
-      expect(vertex1.isAdjacent(vertex2)).toBeTruthy();
+      expect(vertex1.isAdjacent(vertex2)).toBe(true);
       expect(vertex1.getAdjacentWeight(vertex2)).toEqual(0);
     });
 
@@ -30,7 +30,7 @@ describe('GraphVertex', () => {
       expect(vertex1.adjacents.size).toBe(0);
       vertex1.addAdjacent(vertex2, 5);
       expect(vertex1.adjacents.size).toBe(1);
-      expect(vertex1.isAdjacent(vertex2)).toBeTruthy();
+      expect(vertex1.isAdjacent(vertex2)).toBe(true);
       expect(vertex1.getAdjacentWeight(vertex2)).toEqual(5);
     });
   });
@@ -47,12 +47,12 @@ describe('GraphVertex', () => {
   describe('#isAdjacent', () => {
     it('should return true if they are adjacent', () => {
       vertex1.addAdjacent(vertex2);
-      expect(vertex1.isAdjacent(vertex2)).toBeTruthy();
+      expect(vertex1.isAdjacent(vertex2)).toBe(true);
     });
 
     it('should return false if they are not adjacent', () => {
       vertex1.addAdjacent(vertex2);
-      expect(vertex1.isAdjacent(vertex3)).toBeFalsy();
+      expect(vertex1.isAdjacent(vertex3)).toBe(false);
     });
   });
 

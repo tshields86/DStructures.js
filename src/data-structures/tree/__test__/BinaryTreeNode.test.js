@@ -159,19 +159,19 @@ describe('BinaryTreeNode', () => {
 
   describe('#removeChild', () => {
     it('should remove left child node and return boolean true', () => {
-      expect(node3.removeChild(node7)).toBeTruthy();
+      expect(node3.removeChild(node7)).toBe(true);
       expect(node3.left).toBeNull();
       expect(node7.parent).toBeNull();
     });
 
     it('should remove right child node and return boolean true', () => {
-      expect(node1.removeChild(node4)).toBeTruthy();
+      expect(node1.removeChild(node4)).toBe(true);
       expect(node1.right).toBeNull();
       expect(node4.parent).toBeNull();
     });
 
     it('should not remove if not a child node and return boolean false', () => {
-      expect(node1.removeChild(node0)).toBeFalsy();
+      expect(node1.removeChild(node0)).toBe(false);
       expect(node1.left).toEqual(node3);
       expect(node1.right).toEqual(node4);
     });
@@ -179,19 +179,19 @@ describe('BinaryTreeNode', () => {
 
   describe('#replaceChild', () => {
     it('should replace left child node and return boolean true', () => {
-      expect(node3.replaceChild(node7, nodeX)).toBeTruthy();
+      expect(node3.replaceChild(node7, nodeX)).toBe(true);
       expect(node3.left).toEqual(nodeX);
       expect(node7.parent).toBeNull();
     });
 
     it('should replace right child node and return boolean true', () => {
-      expect(node1.replaceChild(node4, nodeX)).toBeTruthy();
+      expect(node1.replaceChild(node4, nodeX)).toBe(true);
       expect(node1.right).toEqual(nodeX);
       expect(node4.parent).toBeNull();
     });
 
     it('should not replace if not a child node and return boolean false', () => {
-      expect(node1.replaceChild(node0, nodeX)).toBeFalsy();
+      expect(node1.replaceChild(node0, nodeX)).toBe(false);
       expect(node1.left).toEqual(node3);
       expect(node1.right).toEqual(node4);
     });

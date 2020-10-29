@@ -134,13 +134,13 @@ describe('PriorityQueue', () => {
 
     describe('#isEmpty', () => {
       it('should check whether priority queue is empty', () => {
-        expect(priorityQueue.isEmpty()).toBeTruthy();
+        expect(priorityQueue.isEmpty()).toBe(true);
 
         priorityQueue.offer('foo', 1);
-        expect(priorityQueue.isEmpty()).toBeFalsy();
+        expect(priorityQueue.isEmpty()).toBe(false);
 
         priorityQueue.clear();
-        expect(priorityQueue.isEmpty()).toBeTruthy();
+        expect(priorityQueue.isEmpty()).toBe(true);
       });
     });
   });
@@ -276,13 +276,13 @@ describe('PriorityQueue', () => {
 
     describe('#isEmpty', () => {
       it('should check whether priority queue is empty', () => {
-        expect(priorityQueue.isEmpty()).toBeTruthy();
+        expect(priorityQueue.isEmpty()).toBe(true);
 
         priorityQueue.offer('foo', 1);
-        expect(priorityQueue.isEmpty()).toBeFalsy();
+        expect(priorityQueue.isEmpty()).toBe(false);
 
         priorityQueue.clear();
-        expect(priorityQueue.isEmpty()).toBeTruthy();
+        expect(priorityQueue.isEmpty()).toBe(true);
       });
     });
   });

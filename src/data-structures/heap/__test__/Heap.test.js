@@ -128,8 +128,8 @@ describe('Heap', () => {
           .offer(1)
           .offer(2);
 
-        expect(heap.has(1)).toBeTruthy();
-        expect(heap.has(3)).toBeFalsy();
+        expect(heap.has(1)).toBe(true);
+        expect(heap.has(3)).toBe(false);
       });
     });
 
@@ -164,13 +164,13 @@ describe('Heap', () => {
 
     describe('#isEmpty', () => {
       it('should check whether heap is empty', () => {
-        expect(heap.isEmpty()).toBeTruthy();
+        expect(heap.isEmpty()).toBe(true);
 
         heap.offer(1);
-        expect(heap.isEmpty()).toBeFalsy();
+        expect(heap.isEmpty()).toBe(false);
 
         heap.clear();
-        expect(heap.isEmpty()).toBeTruthy();
+        expect(heap.isEmpty()).toBe(true);
       });
     });
   });
@@ -300,8 +300,8 @@ describe('Heap', () => {
           .offer(1)
           .offer(2);
 
-        expect(heap.has(1)).toBeTruthy();
-        expect(heap.has(3)).toBeFalsy();
+        expect(heap.has(1)).toBe(true);
+        expect(heap.has(3)).toBe(false);
       });
     });
 
@@ -336,13 +336,13 @@ describe('Heap', () => {
 
     describe('#isEmpty', () => {
       it('should check whether heap is empty', () => {
-        expect(heap.isEmpty()).toBeTruthy();
+        expect(heap.isEmpty()).toBe(true);
 
         heap.offer(1);
-        expect(heap.isEmpty()).toBeFalsy();
+        expect(heap.isEmpty()).toBe(false);
 
         heap.clear();
-        expect(heap.isEmpty()).toBeTruthy();
+        expect(heap.isEmpty()).toBe(true);
       });
     });
   });

@@ -127,8 +127,8 @@ describe('MaxHeap', () => {
         .offer(1)
         .offer(2);
 
-      expect(maxHeap.has(1)).toBeTruthy();
-      expect(maxHeap.has(3)).toBeFalsy();
+      expect(maxHeap.has(1)).toBe(true);
+      expect(maxHeap.has(3)).toBe(false);
     });
   });
 
@@ -163,13 +163,13 @@ describe('MaxHeap', () => {
 
   describe('#isEmpty', () => {
     it('should check whether heap is empty', () => {
-      expect(maxHeap.isEmpty()).toBeTruthy();
+      expect(maxHeap.isEmpty()).toBe(true);
 
       maxHeap.offer(1);
-      expect(maxHeap.isEmpty()).toBeFalsy();
+      expect(maxHeap.isEmpty()).toBe(false);
 
       maxHeap.clear();
-      expect(maxHeap.isEmpty()).toBeTruthy();
+      expect(maxHeap.isEmpty()).toBe(true);
     });
   });
 });

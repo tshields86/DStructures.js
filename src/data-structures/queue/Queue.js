@@ -80,14 +80,12 @@ class Queue {
     return this.linkedList.toArray();
   }
 
-  /**
-   * Returns a string of all the elements in the queue.
-   * @param {function} callback
-   * @return {string}
-   */
-  toString(callback) {
-    return this.linkedList.toArrayNodes()
-      .map(node => node.toString(callback)).toString();
+  * [Symbol.iterator]() {
+    let node = this.linkedList.head;
+    while (node) {
+      yield node.value;
+      node = node.next;
+    }
   }
 }
 

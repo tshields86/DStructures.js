@@ -77,22 +77,22 @@ describe('HashMap', () => {
   describe('#reset', () => {
     it('should clear out the hash map', () => {
       expect(hashMap.size).toBe(3);
-      expect(hashMap.has('foo')).toBeTruthy();
+      expect(hashMap.has('foo')).toBe(true);
 
       hashMap.reset();
       expect(hashMap.size).toBe(0);
-      expect(hashMap.has('foo')).toBeFalsy();
+      expect(hashMap.has('foo')).toBe(false);
     });
   });
 
   describe('#clear', () => {
     it('should clear out the hash map', () => {
       expect(hashMap.size).toBe(3);
-      expect(hashMap.has('foo')).toBeTruthy();
+      expect(hashMap.has('foo')).toBe(true);
 
       hashMap.clear();
       expect(hashMap.size).toBe(0);
-      expect(hashMap.has('foo')).toBeFalsy();
+      expect(hashMap.has('foo')).toBe(false);
     });
   });
 
@@ -127,30 +127,30 @@ describe('HashMap', () => {
 
   describe('#has', () => {
     it('should return true if set', () => {
-      expect(hashMap.has('foo')).toBeTruthy();
-      expect(hashMap.has('bar')).toBeTruthy();
+      expect(hashMap.has('foo')).toBe(true);
+      expect(hashMap.has('bar')).toBe(true);
     });
 
     it('should return true if not set', () => {
-      expect(hashMap.has('bam')).toBeFalsy();
+      expect(hashMap.has('bam')).toBe(false);
     });
   });
 
   describe('#delete', () => {
     it('should remove entry from hash map if set', () => {
       expect(hashMap.size).toBe(3);
-      expect(hashMap.has('foo')).toBeTruthy();
+      expect(hashMap.has('foo')).toBe(true);
 
-      expect(hashMap.delete('foo')).toBeTruthy();
+      expect(hashMap.delete('foo')).toBe(true);
       expect(hashMap.size).toBe(2);
-      expect(hashMap.has('foo')).toBeFalsy();
+      expect(hashMap.has('foo')).toBe(false);
     });
 
     it('should not remove entry from hash map if not set', () => {
       expect(hashMap.size).toBe(3);
-      expect(hashMap.has('bam')).toBeFalsy();
+      expect(hashMap.has('bam')).toBe(false);
 
-      expect(hashMap.delete('bam')).toBeFalsy();
+      expect(hashMap.delete('bam')).toBe(false);
       expect(hashMap.size).toBe(3);
     });
   });
@@ -170,13 +170,13 @@ describe('HashMap', () => {
 
   describe('#isBeyondloadFactor', () => {
     it('should return false if below the load factor', () => {
-      expect(hashMap.isBeyondloadFactor()).toBeFalsy();
+      expect(hashMap.isBeyondloadFactor()).toBe(false);
     });
 
     it('should return true if above the load factor', () => {
       /* Manually set loadfactor for testing */
       hashMap.loadFactor = 0.1;
-      expect(hashMap.isBeyondloadFactor()).toBeTruthy();
+      expect(hashMap.isBeyondloadFactor()).toBe(true);
     });
   });
 

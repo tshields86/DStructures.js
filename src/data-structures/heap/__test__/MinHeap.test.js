@@ -127,8 +127,8 @@ describe('MinHeap', () => {
         .offer(1)
         .offer(2);
 
-      expect(minHeap.has(1)).toBeTruthy();
-      expect(minHeap.has(3)).toBeFalsy();
+      expect(minHeap.has(1)).toBe(true);
+      expect(minHeap.has(3)).toBe(false);
     });
   });
 
@@ -163,13 +163,13 @@ describe('MinHeap', () => {
 
   describe('#isEmpty', () => {
     it('should check whether heap is empty', () => {
-      expect(minHeap.isEmpty()).toBeTruthy();
+      expect(minHeap.isEmpty()).toBe(true);
 
       minHeap.offer(1);
-      expect(minHeap.isEmpty()).toBeFalsy();
+      expect(minHeap.isEmpty()).toBe(false);
 
       minHeap.clear();
-      expect(minHeap.isEmpty()).toBeTruthy();
+      expect(minHeap.isEmpty()).toBe(true);
     });
   });
 });

@@ -8,33 +8,33 @@ const {
 describe('utils', () => {
   describe('#isOdd', () => {
     it('should return true if number is odd', () => {
-      expect(isOdd(-1)).toBeTruthy();
-      expect(isOdd(1)).toBeTruthy();
-      expect(isOdd(3)).toBeTruthy();
-      expect(isOdd(9)).toBeTruthy();
+      expect(isOdd(-1)).toBe(true);
+      expect(isOdd(1)).toBe(true);
+      expect(isOdd(3)).toBe(true);
+      expect(isOdd(9)).toBe(true);
     });
 
     it('should return false if number is even', () => {
-      expect(isOdd(-2)).toBeFalsy();
-      expect(isOdd(0)).toBeFalsy();
-      expect(isOdd(2)).toBeFalsy();
-      expect(isOdd(10)).toBeFalsy();
+      expect(isOdd(-2)).toBe(false);
+      expect(isOdd(0)).toBe(false);
+      expect(isOdd(2)).toBe(false);
+      expect(isOdd(10)).toBe(false);
     });
   });
 
   describe('#isPrime', () => {
     it('should return true if number is prime', () => {
-      expect(isPrime(2)).toBeTruthy();
-      expect(isPrime(3)).toBeTruthy();
-      expect(isPrime(149)).toBeTruthy();
-      expect(isPrime(997)).toBeTruthy();
+      expect(isPrime(2)).toBe(true);
+      expect(isPrime(3)).toBe(true);
+      expect(isPrime(149)).toBe(true);
+      expect(isPrime(997)).toBe(true);
     });
 
     it('should return false if number is not prime', () => {
-      expect(isPrime(1)).toBeFalsy();
-      expect(isPrime(4)).toBeFalsy();
-      expect(isPrime(100)).toBeFalsy();
-      expect(isPrime(1050)).toBeFalsy();
+      expect(isPrime(1)).toBe(false);
+      expect(isPrime(4)).toBe(false);
+      expect(isPrime(100)).toBe(false);
+      expect(isPrime(1050)).toBe(false);
     });
   });
 

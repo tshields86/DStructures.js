@@ -7,12 +7,12 @@ describe('Queue', () => {
 
   it('should create empty queue', () => {
     queue = new Queue();
-    expect(queue.toString()).toBe('');
+    expect([...queue]).toEqual([]);
   });
 
   it('should create queue from iterable', () => {
     queue = new Queue(ITERABLE);
-    expect(queue.toString()).toBe('1,2,3');
+    expect([...queue]).toEqual([1, 2, 3]);
   });
 
   describe('#enqueue', () => {
@@ -22,14 +22,14 @@ describe('Queue', () => {
       expect(queue.linkedList.tail).toBeNull();
 
       queue.enqueue(1);
-      expect(queue.linkedList.head.toString()).toBe('1');
-      expect(queue.linkedList.tail.toString()).toBe('1');
+      expect(queue.linkedList.head.value).toBe(1);
+      expect(queue.linkedList.tail.value).toBe(1);
 
       queue
         .enqueue(2)
         .enqueue(3);
 
-      expect(queue.toString()).toBe('1,2,3');
+      expect([...queue]).toEqual([1, 2, 3]);
     });
 
     it('should add element to the end of the queue (alias add)', () => {
@@ -38,14 +38,14 @@ describe('Queue', () => {
       expect(queue.linkedList.tail).toBeNull();
 
       queue.add(1);
-      expect(queue.linkedList.head.toString()).toBe('1');
-      expect(queue.linkedList.tail.toString()).toBe('1');
+      expect(queue.linkedList.head.value).toBe(1);
+      expect(queue.linkedList.tail.value).toBe(1);
 
       queue
         .add(2)
         .add(3);
 
-      expect(queue.toString()).toBe('1,2,3');
+      expect([...queue]).toEqual([1, 2, 3]);
     });
   });
 
@@ -56,7 +56,7 @@ describe('Queue', () => {
         .enqueue(1)
         .enqueue(2);
 
-      expect(queue.toString()).toBe('1,2');
+      expect([...queue]).toEqual([1, 2]);
       expect(queue.dequeue()).toBe(1);
       expect(queue.peek()).toBe(2);
     });
@@ -67,7 +67,7 @@ describe('Queue', () => {
         .enqueue(1)
         .enqueue(2);
 
-      expect(queue.toString()).toBe('1,2');
+      expect([...queue]).toEqual([1, 2]);
       expect(queue.remove()).toBe(1);
       expect(queue.peek()).toBe(2);
     });
@@ -103,23 +103,23 @@ describe('Queue', () => {
   describe('#clear', () => {
     it('should all nodes from the queue', () => {
       queue = new Queue(ITERABLE);
-      expect(queue.toString()).toBe('1,2,3');
+      expect([...queue]).toEqual([1, 2, 3]);
 
       queue.clear();
-      expect(queue.toString()).toBe('');
+      expect([...queue]).toEqual([]);
     });
   });
 
   describe('#isEmpty', () => {
     it('should check whether queue is empty', () => {
       queue = new Queue();
-      expect(queue.isEmpty()).toBeTruthy();
+      expect(queue.isEmpty()).toBe(true);
 
       queue.enqueue(1);
-      expect(queue.isEmpty()).toBeFalsy();
+      expect(queue.isEmpty()).toBe(false);
 
       queue.clear();
-      expect(queue.isEmpty()).toBeTruthy();
+      expect(queue.isEmpty()).toBe(true);
     });
   });
 
@@ -127,7 +127,7 @@ describe('Queue', () => {
     it('should add nodes to queue from array', () => {
       queue = new Queue();
       queue.fromArray(ITERABLE);
-      expect(queue.toString()).toBe('1,2,3');
+      expect([...queue]).toEqual([1, 2, 3]);
     });
   });
 
@@ -139,26 +139,11 @@ describe('Queue', () => {
     });
   });
 
-  describe('#toString', () => {
-    it('should stringify queue values', () => {
-      queue = new Queue();
-      queue.fromArray(ITERABLE);
-      expect(queue.toString()).toBe('1,2,3');
-    });
+  describe('#[Symbol.iterator]', () => {
+    it('should iterate through queue and yield each node value', () => {
+      queue = new Queue(ITERABLE);
 
-    it('should handle a custom nodeStringifier for object values', () => {
-      queue = new Queue();
-
-      const nodeValue1 = { name: 'John', age: 20 };
-      const nodeValue2 = { name: 'Smith', age: 30 };
-
-      queue
-        .enqueue(nodeValue1)
-        .enqueue(nodeValue2);
-
-      const nodeStringifier = value => `${value.name}: ${value.age}`;
-
-      expect(queue.toString(nodeStringifier)).toBe('John: 20,Smith: 30');
+      expect([...queue]).toEqual([1, 2, 3]);
     });
   });
 });

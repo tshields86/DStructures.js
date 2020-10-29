@@ -32,9 +32,9 @@ describe('Graph', () => {
   describe('#removeVertex', () => {
     it('should remove vertex from graph', () => {
       graph.addVertex('foo');
-      expect(graph.removeVertex('foo')).toBeTruthy();
+      expect(graph.removeVertex('foo')).toBe(true);
       expect(graph.vertices.size).toBe(0);
-      expect(graph.removeVertex('foo')).toBeFalsy();
+      expect(graph.removeVertex('foo')).toBe(false);
     });
   });
 
@@ -47,18 +47,18 @@ describe('Graph', () => {
     it('should add source and destination adjacent of eachother in undirected graph', () => {
       graph = new Graph(Graph.UNDIRECTED);
       const [foo, bar] = graph.addEdge('foo', 'bar');
-      expect(foo.getAdjacents().includes(bar)).toBeTruthy();
-      expect(bar.getAdjacents().includes(foo)).toBeTruthy();
+      expect(foo.getAdjacents().includes(bar)).toBe(true);
+      expect(bar.getAdjacents().includes(foo)).toBe(true);
     });
 
     it('should add source as adjacent of destination in directed graph', () => {
       graph = new Graph(Graph.DIRECTED);
       const [foo, bar] = graph.addEdge('foo', 'bar');
-      expect(foo.getAdjacents().includes(bar)).toBeTruthy();
-      expect(bar.getAdjacents().includes(foo)).toBeFalsy();
+      expect(foo.getAdjacents().includes(bar)).toBe(true);
+      expect(bar.getAdjacents().includes(foo)).toBe(false);
 
       graph.addEdge('bar', 'foo');
-      expect(bar.getAdjacents().includes(foo)).toBeTruthy();
+      expect(bar.getAdjacents().includes(foo)).toBe(true);
     });
   });
 
@@ -69,15 +69,15 @@ describe('Graph', () => {
 
     it('should remove edges if they exist', () => {
       const [foo, bar] = graph.removeEdge('foo', 'bar');
-      expect(foo.getAdjacents().includes(bar)).toBeFalsy();
-      expect(bar.getAdjacents().includes(foo)).toBeFalsy();
+      expect(foo.getAdjacents().includes(bar)).toBe(false);
+      expect(bar.getAdjacents().includes(foo)).toBe(false);
     });
 
     it('should not create vertex when removing unexisting target', () => {
       const [foo, baz] = graph.removeEdge('foo', 'baz');
       const bar = graph.vertices.get('bar');
       expect(graph.vertices.size).toBe(2);
-      expect(foo.getAdjacents().includes(bar)).toBeTruthy();
+      expect(foo.getAdjacents().includes(bar)).toBe(true);
       expect(baz).toBe(undefined);
     });
 
@@ -96,15 +96,15 @@ describe('Graph', () => {
 
     it('should remove edges if they exist', () => {
       const [foo, bar] = graph.removeEdge('foo', 'bar');
-      expect(foo.getAdjacents().includes(bar)).toBeFalsy();
-      expect(bar.getAdjacents().includes(foo)).toBeFalsy();
+      expect(foo.getAdjacents().includes(bar)).toBe(false);
+      expect(bar.getAdjacents().includes(foo)).toBe(false);
     });
 
     it('should not create vertex when removing unexisting target', () => {
       const [foo, baz] = graph.removeEdge('foo', 'baz');
       const bar = graph.vertices.get('bar');
       expect(graph.vertices.size).toBe(2);
-      expect(foo.getAdjacents().includes(bar)).toBeTruthy();
+      expect(foo.getAdjacents().includes(bar)).toBe(true);
       expect(baz).toBe(undefined);
     });
 
@@ -119,29 +119,29 @@ describe('Graph', () => {
   describe('#areAdjacents', () => {
     it('should return true if vertices are adjacent', () => {
       graph.addEdge('foo', 'bar');
-      expect(graph.areAdjacents('foo', 'bar')).toBeTruthy();
+      expect(graph.areAdjacents('foo', 'bar')).toBe(true);
     });
 
     it('should return true if a undirected graph vertices are adjacent', () => {
       graph = new Graph(Graph.UNDIRECTED);
       graph.addEdge('foo', 'bar');
-      expect(graph.areAdjacents('bar', 'foo')).toBeTruthy();
+      expect(graph.areAdjacents('bar', 'foo')).toBe(true);
     });
 
     it('should return false if a directed graph vertices are adjacent in one direction only', () => {
       graph = new Graph(Graph.DIRECTED);
       graph.addEdge('foo', 'bar');
-      expect(graph.areAdjacents('bar', 'foo')).toBeFalsy();
+      expect(graph.areAdjacents('bar', 'foo')).toBe(false);
     });
 
     it('should return false if vertices do not exist', () => {
-      expect(graph.areAdjacents('foo', 'bar')).toBeFalsy();
+      expect(graph.areAdjacents('foo', 'bar')).toBe(false);
     });
 
     it('should return false if vertices are not adjacent', () => {
       graph.addVertex('foo');
       graph.addVertex('bar');
-      expect(graph.areAdjacents('foo', 'bar')).toBeFalsy();
+      expect(graph.areAdjacents('foo', 'bar')).toBe(false);
     });
   });
 
@@ -216,7 +216,7 @@ describe('Graph', () => {
         expect(dfs.next().value.value).toBe(9);
 
         expect(dfs.next().value).toBe(undefined);
-        expect(dfs.next().done).toBeTruthy();
+        expect(dfs.next().done).toBe(true);
       });
     });
 
@@ -241,15 +241,15 @@ describe('Graph', () => {
 
     describe('#areConnected', () => {
       it('should return true if two vertices are connected', () => {
-        expect(graph.areConnected('foo', 'baz')).toBeTruthy();
+        expect(graph.areConnected('foo', 'baz')).toBe(true);
       });
 
       it('should return true if two vertices are connected', () => {
-        expect(graph.areConnected('foo', 'foo')).toBeTruthy();
+        expect(graph.areConnected('foo', 'foo')).toBe(true);
       });
 
       it('should return true if two vertices are connected', () => {
-        expect(graph.areConnected('foo', 'bam')).toBeFalsy();
+        expect(graph.areConnected('foo', 'bam')).toBe(false);
       });
     });
 

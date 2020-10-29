@@ -24,7 +24,7 @@ describe('HashSet', () => {
       hashSet.add('foo', 'bar');
 
       expect(hashSet.size).toBe(1);
-      expect(hashSet.has('foo')).toBeTruthy();
+      expect(hashSet.has('foo')).toBe(true);
     });
 
     it('should add the values of any type', () => {
@@ -43,12 +43,12 @@ describe('HashSet', () => {
       hashSet.add(string);
 
       expect(hashSet.size).toBe(6);
-      expect(hashSet.has(array)).toBeTruthy();
-      expect(hashSet.has(boolean)).toBeTruthy();
-      expect(hashSet.has(func)).toBeTruthy();
-      expect(hashSet.has(number)).toBeTruthy();
-      expect(hashSet.has(object)).toBeTruthy();
-      expect(hashSet.has(string)).toBeTruthy();
+      expect(hashSet.has(array)).toBe(true);
+      expect(hashSet.has(boolean)).toBe(true);
+      expect(hashSet.has(func)).toBe(true);
+      expect(hashSet.has(number)).toBe(true);
+      expect(hashSet.has(object)).toBe(true);
+      expect(hashSet.has(string)).toBe(true);
     });
   });
 
@@ -68,40 +68,40 @@ describe('HashSet', () => {
   describe('#clear', () => {
     it('should clear out the hash set', () => {
       expect(hashSet.size).toBe(3);
-      expect(hashSet.has('foo')).toBeTruthy();
+      expect(hashSet.has('foo')).toBe(true);
 
       hashSet.clear();
       expect(hashSet.size).toBe(0);
-      expect(hashSet.has('foo')).toBeFalsy();
+      expect(hashSet.has('foo')).toBe(false);
     });
   });
 
   describe('#has', () => {
     it('should return true if in hash set', () => {
-      expect(hashSet.has('foo')).toBeTruthy();
-      expect(hashSet.has('bar')).toBeTruthy();
+      expect(hashSet.has('foo')).toBe(true);
+      expect(hashSet.has('bar')).toBe(true);
     });
 
     it('should return true if not in hash set', () => {
-      expect(hashSet.has('bam')).toBeFalsy();
+      expect(hashSet.has('bam')).toBe(false);
     });
   });
 
   describe('#delete', () => {
     it('should remove value from hash set if present', () => {
       expect(hashSet.size).toBe(3);
-      expect(hashSet.has('foo')).toBeTruthy();
+      expect(hashSet.has('foo')).toBe(true);
 
-      expect(hashSet.delete('foo')).toBeTruthy();
+      expect(hashSet.delete('foo')).toBe(true);
       expect(hashSet.size).toBe(2);
-      expect(hashSet.has('foo')).toBeFalsy();
+      expect(hashSet.has('foo')).toBe(false);
     });
 
     it('should not remove value from hash set if not present', () => {
       expect(hashSet.size).toBe(3);
-      expect(hashSet.has('bam')).toBeFalsy();
+      expect(hashSet.has('bam')).toBe(false);
 
-      expect(hashSet.delete('bam')).toBeFalsy();
+      expect(hashSet.delete('bam')).toBe(false);
       expect(hashSet.size).toBe(3);
     });
   });

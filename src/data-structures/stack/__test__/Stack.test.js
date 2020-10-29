@@ -7,12 +7,12 @@ describe('Stack', () => {
 
   it('should create empty stack', () => {
     stack = new Stack();
-    expect(stack.toString()).toBe('');
+    expect([...stack]).toEqual([]);
   });
 
   it('should create stack from iterable', () => {
     stack = new Stack(ITERABLE);
-    expect(stack.toString()).toBe('3,2,1');
+    expect([...stack]).toEqual([3, 2, 1]);
   });
 
   describe('#push', () => {
@@ -22,14 +22,14 @@ describe('Stack', () => {
       expect(stack.linkedList.tail).toBeNull();
 
       stack.push(1);
-      expect(stack.linkedList.head.toString()).toBe('1');
-      expect(stack.linkedList.tail.toString()).toBe('1');
+      expect(stack.linkedList.head.value).toBe(1);
+      expect(stack.linkedList.tail.value).toBe(1);
 
       stack
         .push(2)
         .push(3);
 
-      expect(stack.toString()).toBe('3,2,1');
+      expect([...stack]).toEqual([3, 2, 1]);
     });
 
     it('should add element to the beginning of the stack (alias add)', () => {
@@ -38,14 +38,14 @@ describe('Stack', () => {
       expect(stack.linkedList.tail).toBeNull();
 
       stack.add(1);
-      expect(stack.linkedList.head.toString()).toBe('1');
-      expect(stack.linkedList.tail.toString()).toBe('1');
+      expect(stack.linkedList.head.value).toBe(1);
+      expect(stack.linkedList.tail.value).toBe(1);
 
       stack
         .add(2)
         .add(3);
 
-      expect(stack.toString()).toBe('3,2,1');
+      expect([...stack]).toEqual([3, 2, 1]);
     });
   });
 
@@ -56,7 +56,7 @@ describe('Stack', () => {
         .push(1)
         .push(2);
 
-      expect(stack.toString()).toBe('2,1');
+      expect([...stack]).toEqual([2, 1]);
       expect(stack.pop()).toBe(2);
       expect(stack.peek()).toBe(1);
     });
@@ -67,7 +67,7 @@ describe('Stack', () => {
         .push(1)
         .push(2);
 
-      expect(stack.toString()).toBe('2,1');
+      expect([...stack]).toEqual([2, 1]);
       expect(stack.remove()).toBe(2);
       expect(stack.peek()).toBe(1);
     });
@@ -103,23 +103,23 @@ describe('Stack', () => {
   describe('#clear', () => {
     it('should all nodes from the stack', () => {
       stack = new Stack(ITERABLE);
-      expect(stack.toString()).toBe('3,2,1');
+      expect([...stack]).toEqual([3, 2, 1]);
 
       stack.clear();
-      expect(stack.toString()).toBe('');
+      expect([...stack]).toEqual([]);
     });
   });
 
   describe('#isEmpty', () => {
     it('should check whether stack is empty', () => {
       stack = new Stack();
-      expect(stack.isEmpty()).toBeTruthy();
+      expect(stack.isEmpty()).toBe(true);
 
       stack.push(1);
-      expect(stack.isEmpty()).toBeFalsy();
+      expect(stack.isEmpty()).toBe(false);
 
       stack.clear();
-      expect(stack.isEmpty()).toBeTruthy();
+      expect(stack.isEmpty()).toBe(true);
     });
   });
 
@@ -127,7 +127,7 @@ describe('Stack', () => {
     it('should add nodes to stack from array', () => {
       stack = new Stack();
       stack.fromArray(ITERABLE);
-      expect(stack.toString()).toBe('3,2,1');
+      expect([...stack]).toEqual([3, 2, 1]);
     });
   });
 
@@ -139,26 +139,12 @@ describe('Stack', () => {
     });
   });
 
-  describe('#toString', () => {
-    it('should stringify stack values', () => {
-      stack = new Stack();
-      stack.fromArray(ITERABLE);
-      expect(stack.toString()).toBe('3,2,1');
-    });
 
-    it('should handle a custom nodeStringifier for object values', () => {
-      stack = new Stack();
+  describe('#[Symbol.iterator]', () => {
+    it('should iterate through queue and yield each node value', () => {
+      stack = new Stack(ITERABLE);
 
-      const nodeValue1 = { name: 'John', age: 20 };
-      const nodeValue2 = { name: 'Smith', age: 30 };
-
-      stack
-        .push(nodeValue1)
-        .push(nodeValue2);
-
-      const nodeStringifier = value => `${value.name}: ${value.age}`;
-
-      expect(stack.toString(nodeStringifier)).toBe('Smith: 30,John: 20');
+      expect([...stack]).toEqual([3, 2, 1]);
     });
   });
 });

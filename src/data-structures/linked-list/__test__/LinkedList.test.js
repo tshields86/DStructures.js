@@ -7,12 +7,12 @@ describe('LinkedList', () => {
 
   it('should create empty linked list', () => {
     linkedList = new LinkedList();
-    expect(linkedList.toString()).toBe('');
+    expect([...linkedList]).toEqual([]);
   });
 
   it('should create linked list from iterable', () => {
     linkedList = new LinkedList(ITERABLE);
-    expect(linkedList.toString()).toBe('1,2,3');
+    expect([...linkedList]).toEqual([1, 2, 3]);
   });
 
   describe('#addFirst', () => {
@@ -22,14 +22,14 @@ describe('LinkedList', () => {
       expect(linkedList.tail).toBeNull();
 
       linkedList.addFirst(1);
-      expect(linkedList.head.toString()).toBe('1');
-      expect(linkedList.tail.toString()).toBe('1');
+      expect(linkedList.head.value).toBe(1);
+      expect(linkedList.tail.value).toBe(1);
 
       linkedList
         .addFirst(2)
         .addFirst(3);
 
-      expect(linkedList.toString()).toBe('3,2,1');
+      expect([...linkedList]).toEqual([3, 2, 1]);
     });
 
     it('should add element to the beginning of the linked list (alias unshift)', () => {
@@ -38,14 +38,14 @@ describe('LinkedList', () => {
       expect(linkedList.tail).toBeNull();
 
       linkedList.unshift(1);
-      expect(linkedList.head.toString()).toBe('1');
-      expect(linkedList.tail.toString()).toBe('1');
+      expect(linkedList.head.value).toBe(1);
+      expect(linkedList.tail.value).toBe(1);
 
       linkedList
         .unshift(2)
         .unshift(3);
 
-      expect(linkedList.toString()).toBe('3,2,1');
+      expect([...linkedList]).toEqual([3, 2, 1]);
     });
   });
 
@@ -56,14 +56,14 @@ describe('LinkedList', () => {
       expect(linkedList.tail).toBeNull();
 
       linkedList.addLast(1);
-      expect(linkedList.head.toString()).toBe('1');
-      expect(linkedList.tail.toString()).toBe('1');
+      expect(linkedList.head.value).toBe(1);
+      expect(linkedList.tail.value).toBe(1);
 
       linkedList
         .addLast(2)
         .addLast(3);
 
-      expect(linkedList.toString()).toBe('1,2,3');
+      expect([...linkedList]).toEqual([1, 2, 3]);
     });
 
     it('should add element to the end of the linked list (alias push)', () => {
@@ -72,14 +72,14 @@ describe('LinkedList', () => {
       expect(linkedList.tail).toBeNull();
 
       linkedList.push(1);
-      expect(linkedList.head.toString()).toBe('1');
-      expect(linkedList.tail.toString()).toBe('1');
+      expect(linkedList.head.value).toBe(1);
+      expect(linkedList.tail.value).toBe(1);
 
       linkedList
         .push(2)
         .push(3);
 
-      expect(linkedList.toString()).toBe('1,2,3');
+      expect([...linkedList]).toEqual([1, 2, 3]);
     });
   });
 
@@ -90,41 +90,41 @@ describe('LinkedList', () => {
 
     it('should add element to the beginning when index is 0', () => {
       linkedList.add(0, 4);
-      expect(linkedList.toString()).toBe('4,1,2,3');
+      expect([...linkedList]).toEqual([4, 1, 2, 3]);
     });
 
     it('should add element to the end when index is the size of linked list', () => {
       linkedList.add(3, 4);
-      expect(linkedList.toString()).toBe('1,2,3,4');
+      expect([...linkedList]).toEqual([1, 2, 3, 4]);
     });
 
     it('should add element to the correct index postion', () => {
       linkedList.add(1, 4);
-      expect(linkedList.toString()).toBe('1,4,2,3');
+      expect([...linkedList]).toEqual([1, 4, 2, 3]);
     });
 
     it('should not add element when index is out of bounds', () => {
       expect(linkedList.add(-1, 2)).toBeNull();
       expect(linkedList.add(4, 2)).toBeNull();
-      expect(linkedList.toString()).toBe('1,2,3');
+      expect([...linkedList]).toEqual([1, 2, 3]);
     });
   });
 
   describe('#clear', () => {
     it('should all nodes from the list', () => {
       linkedList = new LinkedList(ITERABLE);
-      expect(linkedList.toString()).toBe('1,2,3');
+      expect([...linkedList]).toEqual(ITERABLE);
 
       linkedList.clear();
-      expect(linkedList.toString()).toBe('');
+      expect([...linkedList]).toEqual([]);
     });
   });
 
   describe('#contains', () => {
     it('should check whether linked list contains value', () => {
       linkedList = new LinkedList(ITERABLE);
-      expect(linkedList.contains(1)).toBeTruthy();
-      expect(linkedList.contains(0)).toBeFalsy();
+      expect(linkedList.contains(1)).toBe(true);
+      expect(linkedList.contains(0)).toBe(false);
     });
   });
 
@@ -207,13 +207,13 @@ describe('LinkedList', () => {
   describe('#isEmpty', () => {
     it('should check whether linked list is empty', () => {
       linkedList = new LinkedList();
-      expect(linkedList.isEmpty()).toBeTruthy();
+      expect(linkedList.isEmpty()).toBe(true);
 
       linkedList.addFirst(1);
-      expect(linkedList.isEmpty()).toBeFalsy();
+      expect(linkedList.isEmpty()).toBe(false);
 
       linkedList.clear();
-      expect(linkedList.isEmpty()).toBeTruthy();
+      expect(linkedList.isEmpty()).toBe(true);
     });
   });
 
@@ -240,7 +240,7 @@ describe('LinkedList', () => {
         .addFirst(1)
         .addLast(2);
 
-      expect(linkedList.toString()).toBe('1,2');
+      expect([...linkedList]).toEqual([1, 2]);
       expect(linkedList.removeFirst()).toBe(1);
       expect(linkedList.getFirst()).toBe(2);
     });
@@ -251,7 +251,7 @@ describe('LinkedList', () => {
         .addFirst(1)
         .addLast(2);
 
-      expect(linkedList.toString()).toBe('1,2');
+      expect([...linkedList]).toEqual([1, 2]);
       expect(linkedList.shift()).toBe(1);
       expect(linkedList.getFirst()).toBe(2);
     });
@@ -264,7 +264,7 @@ describe('LinkedList', () => {
         .addFirst(1)
         .addLast(2);
 
-      expect(linkedList.toString()).toBe('1,2');
+      expect([...linkedList]).toEqual([1, 2]);
       expect(linkedList.removeLast()).toBe(2);
       expect(linkedList.getLast()).toBe(1);
       expect(linkedList.tail.next).toBeNull();
@@ -276,7 +276,7 @@ describe('LinkedList', () => {
         .addFirst(1)
         .addLast(2);
 
-      expect(linkedList.toString()).toBe('1,2');
+      expect([...linkedList]).toEqual([1, 2]);
       expect(linkedList.pop()).toBe(2);
       expect(linkedList.getLast()).toBe(1);
       expect(linkedList.tail.next).toBeNull();
@@ -290,24 +290,24 @@ describe('LinkedList', () => {
 
     it('should remove node from the beginning when index is 0', () => {
       expect(linkedList.remove(0)).toBe(1);
-      expect(linkedList.toString()).toBe('2,3');
+      expect([...linkedList]).toEqual([2, 3]);
     });
 
     it('should remove node from the end when index is the size of linked list', () => {
       expect(linkedList.remove(2)).toBe(3);
-      expect(linkedList.toString()).toBe('1,2');
+      expect([...linkedList]).toEqual([1, 2]);
       expect(linkedList.tail.next).toBeNull();
     });
 
     it('should remove node from the correct index postion', () => {
       expect(linkedList.remove(1)).toBe(2);
-      expect(linkedList.toString()).toBe('1,3');
+      expect([...linkedList]).toEqual([1, 3]);
     });
 
     it('should not remove node when index is out of bounds', () => {
       expect(linkedList.remove(-1)).toBeNull();
       expect(linkedList.remove(-3)).toBeNull();
-      expect(linkedList.toString()).toBe('1,2,3');
+      expect([...linkedList]).toEqual([1, 2, 3]);
     });
   });
 
@@ -318,23 +318,23 @@ describe('LinkedList', () => {
 
     it('should set first node value when index is 0', () => {
       expect(linkedList.set(0, 4)).toBe(1);
-      expect(linkedList.toString()).toBe('4,2,3');
+      expect([...linkedList]).toEqual([4, 2, 3]);
     });
 
     it('should set last node value when index is the size of linked list', () => {
       expect(linkedList.set(2, 4)).toBe(3);
-      expect(linkedList.toString()).toBe('1,2,4');
+      expect([...linkedList]).toEqual([1, 2, 4]);
     });
 
     it('should set node value for the correct index postion', () => {
       expect(linkedList.set(1, 4)).toBe(2);
-      expect(linkedList.toString()).toBe('1,4,3');
+      expect([...linkedList]).toEqual([1, 4, 3]);
     });
 
     it('should not set node value when index is out of bounds', () => {
       expect(linkedList.set(-1, 4)).toBeNull();
       expect(linkedList.set(-3, 4)).toBeNull();
-      expect(linkedList.toString()).toBe('1,2,3');
+      expect([...linkedList]).toEqual([1, 2, 3]);
     });
   });
 
@@ -342,7 +342,7 @@ describe('LinkedList', () => {
     it('should add nodes to linked list from array', () => {
       linkedList = new LinkedList();
       linkedList.fromArray(ITERABLE);
-      expect(linkedList.toString()).toBe('1,2,3');
+      expect([...linkedList]).toEqual([1, 2, 3]);
     });
   });
 
@@ -362,36 +362,13 @@ describe('LinkedList', () => {
     });
   });
 
-  describe('#toString', () => {
-    it('should stringify linked list values', () => {
-      linkedList = new LinkedList();
-      linkedList.fromArray(ITERABLE);
-      expect(linkedList.toString()).toBe('1,2,3');
-    });
-
-    it('should handle a custom nodeStringifier for object values', () => {
-      linkedList = new LinkedList();
-
-      const nodeValue1 = { name: 'John', age: 20 };
-      const nodeValue2 = { name: 'Smith', age: 30 };
-
-      linkedList
-        .addFirst(nodeValue1)
-        .addLast(nodeValue2);
-
-      const nodeStringifier = value => `${value.name}: ${value.age}`;
-
-      expect(linkedList.toString(nodeStringifier)).toBe('John: 20,Smith: 30');
-    });
-  });
-
   describe('#reverse', () => {
     it('should reverse linked list', () => {
       linkedList = new LinkedList(ITERABLE);
-      expect(linkedList.toString()).toBe('1,2,3');
+      expect([...linkedList]).toEqual([1, 2, 3]);
 
       linkedList.reverse();
-      expect(linkedList.toString()).toBe('3,2,1');
+      expect([...linkedList]).toEqual([3, 2, 1]);
     });
   });
 
@@ -433,7 +410,6 @@ describe('LinkedList', () => {
   describe('#[Symbol.iterator]', () => {
     it('should iterate through list and yield each node value', () => {
       linkedList = new LinkedList(ITERABLE);
-      expect(linkedList.toString()).toBe('1,2,3');
 
       expect([...linkedList]).toEqual([1, 2, 3]);
     });

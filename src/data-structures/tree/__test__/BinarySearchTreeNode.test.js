@@ -59,7 +59,7 @@ describe('BinarySearchTreeNode', () => {
 
   describe('#remove', () => {
     it('should return false if value does not exist', () => {
-      expect(node3.remove(10)).toBeFalsy();
+      expect(node3.remove(10)).toBe(false);
     });
 
     it('should decrease the meta multiplicity if greater than 1', () => {
@@ -71,20 +71,20 @@ describe('BinarySearchTreeNode', () => {
 
     describe('it is a leaf node', () => {
       it('should remove node if it has a parent', () => {
-        expect(node3.remove(0)).toBeTruthy();
+        expect(node3.remove(0)).toBe(true);
         expect(node3.left.left).toBeNull();
       });
 
       it('should set value to null if it does not have a parent', () => {
         const node10 = new BinarySearchTreeNode(10);
-        expect(node10.remove(10)).toBeTruthy();
+        expect(node10.remove(10)).toBe(true);
         expect(node10.value).toBeNull();
       });
     });
 
     describe('it has both left and right child nodes', () => {
       it('should remove node and restructure tree', () => {
-        expect(node3.remove(1)).toBeTruthy();
+        expect(node3.remove(1)).toBe(true);
         expect(node3.left.value).toBe(2);
         expect(node3.left.left.value).toBe(0);
       });
@@ -92,7 +92,7 @@ describe('BinarySearchTreeNode', () => {
 
     describe('it has only one child node', () => {
       it('should replace child node with itself', () => {
-        expect(node3.remove(5)).toBeTruthy();
+        expect(node3.remove(5)).toBe(true);
         expect(node3.right.value).toBe(4);
       });
     });
@@ -121,7 +121,7 @@ describe('BinarySearchTreeNode', () => {
     });
 
     it('should return null if value does not exist', () => {
-      expect(node3.find(10)).toBeFalsy();
+      expect(node3.find(10)).toBeNull();
     });
   });
 });
