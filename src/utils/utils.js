@@ -31,9 +31,19 @@ const swap = (array, i1, i2) => {
   [array[i1], array[i2]] = [array[i2], array[i1]];
 };
 
+const shuffle = array => {
+  const { length } = array;
+  for (let index = 0; index < length; index++) {
+    const newIndex = Math.floor(Math.random() * length);
+    swap(array, index, newIndex);
+  }
+  return array;
+};
+
 module.exports = {
   isOdd,
   isPrime,
   nextPrime,
   swap,
+  shuffle,
 };
