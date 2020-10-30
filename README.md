@@ -1,4 +1,4 @@
-# Structures.js
+# DStructures.js
 This repository consists of data structures and algorithms written in JavaScript.
 
 ## Data Structures
@@ -29,7 +29,7 @@ This repository consists of data structures and algorithms written in JavaScript
 Clone the repo or install the code via NPM:
 
 ```sh
-npm install structures.js
+npm install DStructures.js
 ```
 
 Then you can import it into your programs:
@@ -55,5 +55,5 @@ const {
   mergeSort,
   quickSort,
   selectionSort,
-} = require('structures.js');
+} = require('DStructures.js');
 ```

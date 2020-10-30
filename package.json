@@ -1,8 +1,8 @@
 {
-  "name": "structures.js",
+  "name": "dstructures.js",
   "version": "1.0.0",
   "description": "Data structures and algorithms written in JavaScript",
-  "author": "Travis Shields",
+  "author": "Travis Shields <travis.shields@gmail.com>",
   "main": "./src/index.js",
   "files": [
     "src/**/*.js"
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tshields86/Structures.js.git"
+    "url": "git+https://github.com/tshields86/DStructures.js.git"
   },
   "keywords": [
     "algorithms",
@@ -35,9 +35,9 @@
   ],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tshields86/Structures.js/issues"
+    "url": "https://github.com/tshields86/DStructures.js/issues"
   },
-  "homepage": "https://github.com/tshields86/Structures.js#readme",
+  "homepage": "https://github.com/tshields86/DStructures.js#readme",
   "devDependencies": {
     "@types/jest": "^24.0.15",
     "eslint": "^6.0.1",
