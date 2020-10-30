@@ -7,7 +7,7 @@ const PriorityQueue = require('../../../data-structures/priority-queue/PriorityQ
  * @param {GraphVertex} startVertex
  * @return {ShortestPaths}
  */
-export default function dijkstra(graph, startVertex) {
+const dijkstra = (graph, startVertex) => {
   const weights = new HashMap();
   const exploredVertices = new HashMap();
   const previousVertices = new HashMap();
@@ -55,4 +55,6 @@ export default function dijkstra(graph, startVertex) {
     weights,
     previousVertices,
   };
-}
+};
+
+module.exports = dijkstra;
