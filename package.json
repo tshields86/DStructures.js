@@ -1,6 +1,6 @@
 {
   "name": "dstructures.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Data structures and algorithms written in JavaScript",
   "author": "Travis Shields <travis.shields@gmail.com>",
   "main": "./src/index.js",
@@ -20,16 +20,16 @@
   },
   "keywords": [
     "algorithms",
+    "binary search tree",
     "computer science",
     "cs",
     "data structures",
-    "javascript",
-    "sorting algorithms",
-    "binary search tree",
-    "linked list",
     "graph",
+    "javascript",
+    "linked list",
     "priority queue",
     "queue",
+    "sorting algorithms",
     "stack",
     "tree"
   ],
@@ -39,12 +39,12 @@
   },
   "homepage": "https://github.com/tshields86/DStructures.js#readme",
   "devDependencies": {
-    "@types/jest": "^24.0.15",
-    "eslint": "^6.0.1",
-    "eslint-config-airbnb-base": "14.1.0",
-    "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-jest": "^22.7.1",
-    "husky": "^2.5.0",
-    "jest": "^24.8.0"
+    "@types/jest": "^29.5.2",
+    "eslint": "^8.43.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jest": "^27.2.2",
+    "husky": "^8.0.3",
+    "jest": "^29.5.0"
   }
 }
