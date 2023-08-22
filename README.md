@@ -1,59 +1,58 @@
 # DStructures.js
-This repository consists of data structures and algorithms written in JavaScript.
+
+Welcome to DStructures.js! This package provides implementations of various data structures and algorithms in JavaScript. Navigate through specific directories to get a deeper understanding of each component.
+
+## Table of Contents
+
+- [Data Structures](#data-structures)
+- [Algorithms](#algorithms)
+- [Installation](#installation)
+- [Getting Started](#getting-started)
 
 ## Data Structures
-* Binary Search Tree: [BinarySearchTree](src/data-structures/tree/README.md)
-* Doubly Linked List: [DoublyLinkedList](src/data-structures/doubly-linked-list/README.md)
-* Graph: [Graph](src/data-structures/graph/README.md)
-* Hash Map: [HashMap](src/data-structures/map/README.md)
-* Hash Set: [HashSet](src/data-structures/set/README.md)
-* Heap: [Heap](src/data-structures/heap/README.md)
-* Linked List: [LinkedList](src/data-structures/linked-list/README.md)
-* Max Heap: [MaxHeap](src/data-structures/heap/README.md)
-* Min Heap: [MinHeap](src/data-structures/heap/README.md)
-* Priority Queue: [PriorityQueue](src/data-structures/priority-queue/README.md)
-* Stack: [Stack](src/data-structures/stack/README.md)
-* Queue: [Queue](src/data-structures/queue/README.md)
+
+- [Linked List](src/data-structures/linked-list/README.md)
+- [Doubly Linked List](src/data-structures/doubly-linked-list/README.md)
+- [Stack](src/data-structures/stack/README.md)
+- [Queue](src/data-structures/queue/README.md)
+- [Tree](src/data-structures/tree/README.md)
+- [Heap](src/data-structures/heap/README.md)
+- [Priority Queue](src/data-structures/priority-queue/README.md)
+- [Hash Set](src/data-structures/hash-set/README.md)
+- [Set](src/data-structures/set/README.md)
+- [Map](src/data-structures/map/README.md)
+
+(Note: For specific details on each data structure, click on the respective link.)
 
 ## Algorithms
-* Dijkstra: [dijkstra](src/algorithms/graph/dijkstra/README.md)
-* Binary Search: [binarySearch](src/algorithms/search/README.md)
-* Bubble Sort: [bubbleSearch](src/algorithms/sorting/README.md)
-* Insertion Sort: [insertionSort](src/algorithms/sorting/README.md)
-* Merge Sort: [mergeSort](src/algorithms/sorting/README.md)
-* Quick Sort: [quickSort](src/algorithms/sorting/README.md)
-* Selection Sort: [selectionSort](src/algorithms/sorting/README.md)
+
+- [Sorting](src/algorithms/sorting/README.md)
+- [Search](src/algorithms/search/README.md)
+- [Graph](src/algorithms/graph/dijkstra/README.md)
+
+(Note: For specific details on each algorithm, click on the respective link.)
 
 ## Installation
 
-Clone the repo or install the code via NPM:
+To utilize these data structures and algorithms in your projects:
 
-```sh
-npm install DStructures.js
+1. Clone the repository.
+2. Navigate to the `src` directory.
+3. Import the desired modules into your project.
+
+## Getting Started
+
+Here's a simple example to get started with the Linked List data structure:
+
+```javascript
+const { LinkedList } = require('DStructures.js');
+
+const list = new LinkedList();
+list.append(1);
+list.append(2);
+list.append(3);
+
+console.log(list.toString());  // Outputs: 1,2,3
 ```
 
-Then you can import it into your programs:
-
-```js
-const {
-  BinarySearchTree,
-  DoublyLinkedList,
-  Graph,
-  HashMap,
-  HashSet,
-  Heap,
-  LinkedList,
-  MaxHeap,
-  MinHeap,
-  PriorityQueue,
-  Stack,
-  Queue,
-  binarySearch,
-  bubbleSort,
-  dijkstra,
-  insertionSort,
-  mergeSort,
-  quickSort,
-  selectionSort,
-} = require('DStructures.js');
-```
+For more detailed usage and API descriptions, please refer to the individual READMEs of each data structure or algorithm.
