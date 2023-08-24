@@ -1,6 +1,6 @@
 {
   "name": "dstructures.js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Data structures and algorithms written in JavaScript",
   "author": "Travis Shields <travis.shields@gmail.com>",
   "main": "./src/index.js",

@@ -36,9 +36,9 @@ Welcome to DStructures.js! This package provides implementations of various data
 
 To utilize these data structures and algorithms in your projects:
 
-1. Clone the repository.
-2. Navigate to the `src` directory.
-3. Import the desired modules into your project.
+```sh
+npm install --save dstructures.js
+```
 
 ## Getting Started
 
@@ -48,11 +48,70 @@ Here's a simple example to get started with the Linked List data structure:
 const { LinkedList } = require('DStructures.js');
 
 const list = new LinkedList();
-list.append(1);
-list.append(2);
-list.append(3);
+list.addLast(1);
+list.addLast(2);
+list.addLast(3);
 
-console.log(list.toString());  // Outputs: 1,2,3
+console.log(list.toArray());  // Outputs: [1, 2, 3]
 ```
 
 For more detailed usage and API descriptions, please refer to the individual READMEs of each data structure or algorithm.
+
+### Require
+```js
+const {
+  BinarySearchTree, BinarySearchTreeNode,
+  DoublyLinkedList, DoublyLinkedListNode,
+  Graph, GraphVertex,
+  HashMap,
+  HashSet,
+  Heap, MinHeap, MaxHeap,
+  LinkedList, LinkedListNode,
+  PriorityQueue, PriorityQueueNode,
+  Queue,
+  Stack,
+  binarySearch,
+  bubbleSort,
+  dijkstra,
+  insertionSort,
+  mergeSort,
+  quickSort,
+  selectionSort,
+} = require('dstructures.js');
+```
+
+### Import
+```js
+import {
+  BinarySearchTree, BinarySearchTreeNode,
+  DoublyLinkedList, DoublyLinkedListNode,
+  Graph, GraphVertex,
+  HashMap,
+  HashSet,
+  Heap, MinHeap, MaxHeap,
+  LinkedList, LinkedListNode,
+  PriorityQueue, PriorityQueueNode,
+  Queue,
+  Stack,
+  binarySearch,
+  bubbleSort,
+  dijkstra,
+  insertionSort,
+  mergeSort,
+  quickSort,
+  selectionSort,
+} from 'dstructures.js';
+```
+
+### Extend
+Data structures are implemented as ES6 classes and can be extended for additional functionality.
+
+```js
+const { Graph } = require('dstructures.js');
+
+class CustomGraph extends Graph {
+  shortestPath(start, end) {
+    // code here
+  }
+}
+```
