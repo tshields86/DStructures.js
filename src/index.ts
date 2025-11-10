@@ -5,5 +5,8 @@ export { DoublyLinkedList } from './data-structures/doubly-linked-list/DoublyLin
 export { DoublyLinkedListNode } from './data-structures/doubly-linked-list/DoublyLinkedListNode';
 export { Stack } from './data-structures/stack/Stack';
 export { Queue } from './data-structures/queue/Queue';
+export { BinarySearchTree } from './data-structures/tree/BinarySearchTree';
+export { BinarySearchTreeNode } from './data-structures/tree/BinarySearchTreeNode';
+export { BinaryTreeNode } from './data-structures/tree/BinaryTreeNode';
 
 // More exports will be added as we rewrite each data structure
