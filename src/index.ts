@@ -11,6 +11,8 @@ export { BinaryTreeNode } from './data-structures/tree/BinaryTreeNode';
 export { Heap } from './data-structures/heap/Heap';
 export { MinHeap } from './data-structures/heap/MinHeap';
 export { MaxHeap } from './data-structures/heap/MaxHeap';
+export { PriorityQueue } from './data-structures/priority-queue/PriorityQueue';
+export { PriorityQueueNode } from './data-structures/priority-queue/PriorityQueueNode';
 
 // Utilities
 export { swap } from './utils/utils';
