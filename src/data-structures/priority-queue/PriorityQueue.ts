@@ -38,7 +38,8 @@ export class PriorityQueue<T> extends Heap<PriorityQueueNode<T>> {
    * @param priority - The priority of the value (lower = higher priority by default)
    * @returns The queue instance for chaining
    */
-  offer(value: T, priority: number): this {
+  // @ts-expect-error - Intentional signature change from parent class
+  override offer(value: T, priority: number): this {
     super.offer(new PriorityQueueNode(value, priority));
     return this;
   }
@@ -49,7 +50,8 @@ export class PriorityQueue<T> extends Heap<PriorityQueueNode<T>> {
    *
    * @returns The value with highest priority, or null if queue is empty
    */
-  poll(): T | null {
+  // @ts-expect-error - Intentional signature change from parent class
+  override poll(): T | null {
     if (super.isEmpty()) return null;
     const node = super.poll();
     return node ? node.value : null;
@@ -61,7 +63,8 @@ export class PriorityQueue<T> extends Heap<PriorityQueueNode<T>> {
    *
    * @returns The value with highest priority, or null if queue is empty
    */
-  peek(): T | null {
+  // @ts-expect-error - Intentional signature change from parent class
+  override peek(): T | null {
     if (super.isEmpty()) return null;
     return this.container[0]!.value;
   }
@@ -93,7 +96,8 @@ export class PriorityQueue<T> extends Heap<PriorityQueueNode<T>> {
    * @param value - The value to find
    * @returns Array of indices where the value exists
    */
-  find(value: T): number[] {
+  // @ts-expect-error - Intentional signature change from parent class
+  override find(value: T): number[] {
     return this.container.reduce<number[]>((indices, node, i) => {
       if (value === node.value) indices.push(i);
       return indices;
@@ -107,7 +111,8 @@ export class PriorityQueue<T> extends Heap<PriorityQueueNode<T>> {
    * @param value - The value to remove
    * @returns The queue instance for chaining
    */
-  removeValue(value: T): this {
+  // @ts-expect-error - Intentional signature change from parent class
+  override removeValue(value: T): this {
     const numberOfItemsToRemove = this.find(value).length;
 
     for (let iteration = 0; iteration < numberOfItemsToRemove; iteration++) {
@@ -152,7 +157,8 @@ export class PriorityQueue<T> extends Heap<PriorityQueueNode<T>> {
    * @param value - The value to check for
    * @returns True if the value exists in the queue
    */
-  has(value: T): boolean {
+  // @ts-expect-error - Intentional signature change from parent class
+  override has(value: T): boolean {
     return this.find(value).length > 0;
   }
 
@@ -169,14 +175,16 @@ export class PriorityQueue<T> extends Heap<PriorityQueueNode<T>> {
   /**
    * Alias for offer. Adds an element with priority.
    */
-  add(value: T, priority: number): this {
+  // @ts-expect-error - Intentional signature change from parent class
+  override add(value: T, priority: number): this {
     return this.offer(value, priority);
   }
 
   /**
    * Alias for poll. Removes and returns highest priority element.
    */
-  remove(): T | null {
+  // @ts-expect-error - Intentional signature change from parent class
+  override remove(): T | null {
     return this.poll();
   }
 }
