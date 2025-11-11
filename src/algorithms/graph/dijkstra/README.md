@@ -8,8 +8,11 @@ Dijkstra's algorithm is a greedy algorithm that solves the single-source shortes
 
 ## Time Complexity
 
-- **Time:** O((V + E) log V) with binary heap (this implementation)
-- **Space:** O(V) for distance and previous vertex storage
+| Operation | Complexity |
+|-----------|------------|
+| Dijkstra's Algorithm | O((V + E) log V) |
+
+**Space Complexity:** O(V)
 
 Where V = number of vertices, E = number of edges
 
