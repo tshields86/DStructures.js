@@ -15,6 +15,8 @@ export { PriorityQueue } from './data-structures/priority-queue/PriorityQueue';
 export { PriorityQueueNode } from './data-structures/priority-queue/PriorityQueueNode';
 export { HashMap } from './data-structures/map/HashMap';
 export { HashSet } from './data-structures/set/HashSet';
+export { Graph, EdgeDirection } from './data-structures/graph/Graph';
+export { GraphVertex } from './data-structures/graph/GraphVertex';
 
 // Utilities
 export { swap, isOdd, isPrime, nextPrime } from './utils/utils';
