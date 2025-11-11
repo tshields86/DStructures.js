@@ -13,9 +13,10 @@ export { MinHeap } from './data-structures/heap/MinHeap';
 export { MaxHeap } from './data-structures/heap/MaxHeap';
 export { PriorityQueue } from './data-structures/priority-queue/PriorityQueue';
 export { PriorityQueueNode } from './data-structures/priority-queue/PriorityQueueNode';
+export { HashMap } from './data-structures/map/HashMap';
 
 // Utilities
-export { swap } from './utils/utils';
+export { swap, isOdd, isPrime, nextPrime } from './utils/utils';
 export type { CompareFn } from './utils/utils';
 
 // More exports will be added as we rewrite each data structure
