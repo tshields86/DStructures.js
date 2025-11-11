@@ -18,8 +18,20 @@ export { HashSet } from './data-structures/set/HashSet';
 export { Graph, EdgeDirection } from './data-structures/graph/Graph';
 export { GraphVertex } from './data-structures/graph/GraphVertex';
 
+// Algorithms - Sorting
+export { bubbleSort } from './algorithms/sorting/bubbleSort';
+export { insertionSort } from './algorithms/sorting/insertionSort';
+export { selectionSort } from './algorithms/sorting/selectionSort';
+export { mergeSort } from './algorithms/sorting/mergeSort';
+export { quickSort } from './algorithms/sorting/quickSort';
+
+// Algorithms - Search
+export { binarySearch, binarySearchRecursive } from './algorithms/search/binarySearch';
+
+// Algorithms - Graph
+export { dijkstra, getShortestPath, getShortestDistance } from './algorithms/graph/dijkstra';
+export type { DijkstraResult } from './algorithms/graph/dijkstra';
+
 // Utilities
 export { swap, isOdd, isPrime, nextPrime } from './utils/utils';
 export type { CompareFn } from './utils/utils';
-
-// More exports will be added as we rewrite each data structure
