@@ -1,0 +1,20 @@
+// Data Structures Entry Point
+export { BinarySearchTree } from './tree/BinarySearchTree';
+export { BinarySearchTreeNode } from './tree/BinarySearchTreeNode';
+export { BinaryTreeNode } from './tree/BinaryTreeNode';
+export { DoublyLinkedList } from './doubly-linked-list/DoublyLinkedList';
+export { DoublyLinkedListNode } from './doubly-linked-list/DoublyLinkedListNode';
+export { HashMap } from './map/HashMap';
+export { HashSet } from './set/HashSet';
+export { Heap } from './heap/Heap';
+export { MaxHeap } from './heap/MaxHeap';
+export { MinHeap } from './heap/MinHeap';
+export { LinkedList } from './linked-list/LinkedList';
+export { LinkedListNode } from './linked-list/LinkedListNode';
+export { PriorityQueue } from './priority-queue/PriorityQueue';
+export { PriorityQueueNode } from './priority-queue/PriorityQueueNode';
+export { Queue } from './queue/Queue';
+export { Stack } from './stack/Stack';
+export { Graph } from './graph/Graph';
+export { GraphVertex } from './graph/GraphVertex';
+export { EdgeDirection } from './graph/Graph';

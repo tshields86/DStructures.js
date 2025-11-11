@@ -4,13 +4,18 @@
   "description": "Modern TypeScript data structures and algorithms library with comprehensive type safety and excellent documentation",
   "author": "Travis Shields <travis.shields@gmail.com>",
   "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./data-structures": {
+      "types": "./dist/data-structures/index.d.ts",
+      "import": "./dist/data-structures/index.js"
+    },
+    "./algorithms": {
+      "types": "./dist/algorithms/index.d.ts",
+      "import": "./dist/algorithms/index.js"
     }
   },
   "files": [
