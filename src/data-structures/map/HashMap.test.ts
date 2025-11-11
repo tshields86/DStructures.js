@@ -273,5 +273,70 @@ describe('HashMap', () => {
       expect(map.get('key')).toBe(2);
       expect(map.size).toBe(1);
     });
+
+    it('should handle undefined values', () => {
+      const undefinedMap = new HashMap<string, number | undefined>();
+      undefinedMap.set('key', undefined);
+      expect(undefinedMap.has('key')).toBe(true);
+      expect(undefinedMap.get('key')).toBeUndefined();
+      expect(undefinedMap.size).toBe(1);
+    });
+
+    it('should handle null values', () => {
+      const nullMap = new HashMap<string, number | null>();
+      nullMap.set('key', null);
+      expect(nullMap.has('key')).toBe(true);
+      expect(nullMap.get('key')).toBeNull();
+      expect(nullMap.size).toBe(1);
+    });
+
+    it('should handle very long string keys', () => {
+      const longKey = 'a'.repeat(10000);
+      map.set(longKey, 999);
+      expect(map.get(longKey)).toBe(999);
+      expect(map.has(longKey)).toBe(true);
+    });
+
+    it('should handle special character keys', () => {
+      const specialKeys = ['@#$%', '!@#$%^&*()', '\n\t', '   ', '🔥💯✨'];
+      specialKeys.forEach((key, index) => {
+        map.set(key, index);
+      });
+      specialKeys.forEach((key, index) => {
+        expect(map.get(key)).toBe(index);
+      });
+    });
+
+    it('should handle numeric string keys vs number keys', () => {
+      const mixedMap = new HashMap<string | number, string>();
+      mixedMap.set('1', 'string-one');
+      mixedMap.set(1, 'number-one');
+      expect(mixedMap.size).toBe(2);
+      expect(mixedMap.get('1')).toBe('string-one');
+      expect(mixedMap.get(1)).toBe('number-one');
+    });
+
+    it('should work correctly after clearing and re-adding', () => {
+      map.set('a', 1).set('b', 2).set('c', 3);
+      map.clear();
+      expect(map.size).toBe(0);
+      map.set('x', 10).set('y', 20);
+      expect(map.size).toBe(2);
+      expect(map.get('x')).toBe(10);
+      expect(map.get('a')).toBeUndefined();
+    });
+
+    it('should handle zero as value', () => {
+      map.set('zero', 0);
+      expect(map.has('zero')).toBe(true);
+      expect(map.get('zero')).toBe(0);
+    });
+
+    it('should handle false as value', () => {
+      const boolMap = new HashMap<string, boolean>();
+      boolMap.set('false', false);
+      expect(boolMap.has('false')).toBe(true);
+      expect(boolMap.get('false')).toBe(false);
+    });
   });
 });

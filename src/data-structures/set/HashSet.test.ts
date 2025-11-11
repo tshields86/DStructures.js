@@ -414,6 +414,89 @@ describe('HashSet', () => {
       expect(set.has('key')).toBe(true);
       expect(set.size).toBe(1);
     });
+
+    it('should handle very long string values', () => {
+      const longValue = 'x'.repeat(10000);
+      set.add(longValue);
+      expect(set.has(longValue)).toBe(true);
+      expect(set.size).toBe(1);
+    });
+
+    it('should handle special character values', () => {
+      const specialValues = ['@#$%', '!@#$%^&*()', '\n\t', '   ', '🔥💯✨'];
+      specialValues.forEach((value) => set.add(value));
+      expect(set.size).toBe(specialValues.length);
+      specialValues.forEach((value) => {
+        expect(set.has(value)).toBe(true);
+      });
+    });
+
+    it('should work correctly after clearing and re-adding', () => {
+      set.add('a').add('b').add('c');
+      set.clear();
+      expect(set.size).toBe(0);
+      set.add('x').add('y');
+      expect(set.size).toBe(2);
+      expect(set.has('x')).toBe(true);
+      expect(set.has('a')).toBe(false);
+    });
+
+    it('should handle numeric zero', () => {
+      const numSet = new HashSet<number>();
+      numSet.add(0);
+      expect(numSet.has(0)).toBe(true);
+      expect(numSet.size).toBe(1);
+    });
+
+    it('should handle false boolean value', () => {
+      const boolSet = new HashSet<boolean>();
+      boolSet.add(false);
+      expect(boolSet.has(false)).toBe(true);
+      expect(boolSet.size).toBe(1);
+    });
+
+    it('should handle union with empty set', () => {
+      set.add('a').add('b');
+      const empty = new HashSet<string>();
+      const result = set.union(empty);
+      expect([...result].sort()).toEqual(['a', 'b']);
+    });
+
+    it('should handle intersection with empty set', () => {
+      set.add('a').add('b');
+      const empty = new HashSet<string>();
+      const result = set.intersection(empty);
+      expect(result.size).toBe(0);
+    });
+
+    it('should handle difference with empty set', () => {
+      set.add('a').add('b');
+      const empty = new HashSet<string>();
+      const result = set.difference(empty);
+      expect([...result].sort()).toEqual(['a', 'b']);
+    });
+
+    it('should handle symmetric difference with empty set', () => {
+      set.add('a').add('b');
+      const empty = new HashSet<string>();
+      const result = set.symmetricDifference(empty);
+      expect([...result].sort()).toEqual(['a', 'b']);
+    });
+
+    it('should handle whitespace-only strings', () => {
+      set.add('   ').add('\t\t').add('\n\n');
+      expect(set.size).toBe(3);
+      expect(set.has('   ')).toBe(true);
+    });
+
+    it('should handle large number of elements', () => {
+      for (let i = 0; i < 1000; i++) {
+        set.add(`item${i}`);
+      }
+      expect(set.size).toBe(1000);
+      expect(set.has('item500')).toBe(true);
+      expect(set.has('item999')).toBe(true);
+    });
   });
 
   describe('Real-world scenarios', () => {
