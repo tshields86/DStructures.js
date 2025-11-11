@@ -14,6 +14,7 @@ export { MaxHeap } from './data-structures/heap/MaxHeap';
 export { PriorityQueue } from './data-structures/priority-queue/PriorityQueue';
 export { PriorityQueueNode } from './data-structures/priority-queue/PriorityQueueNode';
 export { HashMap } from './data-structures/map/HashMap';
+export { HashSet } from './data-structures/set/HashSet';
 
 // Utilities
 export { swap, isOdd, isPrime, nextPrime } from './utils/utils';
