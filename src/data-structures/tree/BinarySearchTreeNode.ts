@@ -10,9 +10,9 @@ const MULTIPLICITY = 'multiplicity';
  * @category Data Structures
  */
 export class BinarySearchTreeNode<T> extends BinaryTreeNode<T> {
-  public left: BinarySearchTreeNode<T> | null = null;
-  public right: BinarySearchTreeNode<T> | null = null;
-  public parent: BinarySearchTreeNode<T> | null = null;
+  public override left: BinarySearchTreeNode<T> | null = null;
+  public override right: BinarySearchTreeNode<T> | null = null;
+  public override parent: BinarySearchTreeNode<T> | null = null;
 
   /**
    * Creates a new BinarySearchTreeNode
@@ -37,7 +37,7 @@ export class BinarySearchTreeNode<T> extends BinaryTreeNode<T> {
       return this;
     }
 
-    if (value < this.value) {
+    if (value < this.value!) {
       if (this.left) return this.left.insert(value);
 
       const newNode = new BinarySearchTreeNode(value);
@@ -45,7 +45,7 @@ export class BinarySearchTreeNode<T> extends BinaryTreeNode<T> {
       return newNode;
     }
 
-    if (value > this.value) {
+    if (value > this.value!) {
       if (this.right) return this.right.insert(value);
 
       const newNode = new BinarySearchTreeNode(value);

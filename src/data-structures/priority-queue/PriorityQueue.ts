@@ -49,7 +49,7 @@ export class PriorityQueue<T> extends Heap<PriorityQueueNode<T>> {
    *
    * @returns The value with highest priority, or null if queue is empty
    */
-  override poll(): T | null {
+  poll(): T | null {
     if (super.isEmpty()) return null;
     const node = super.poll();
     return node ? node.value : null;
@@ -61,7 +61,7 @@ export class PriorityQueue<T> extends Heap<PriorityQueueNode<T>> {
    *
    * @returns The value with highest priority, or null if queue is empty
    */
-  override peek(): T | null {
+  peek(): T | null {
     if (super.isEmpty()) return null;
     return this.container[0]!.value;
   }
@@ -93,7 +93,7 @@ export class PriorityQueue<T> extends Heap<PriorityQueueNode<T>> {
    * @param value - The value to find
    * @returns Array of indices where the value exists
    */
-  override find(value: T): number[] {
+  find(value: T): number[] {
     return this.container.reduce<number[]>((indices, node, i) => {
       if (value === node.value) indices.push(i);
       return indices;
@@ -152,7 +152,7 @@ export class PriorityQueue<T> extends Heap<PriorityQueueNode<T>> {
    * @param value - The value to check for
    * @returns True if the value exists in the queue
    */
-  override has(value: T): boolean {
+  has(value: T): boolean {
     return this.find(value).length > 0;
   }
 
@@ -176,7 +176,7 @@ export class PriorityQueue<T> extends Heap<PriorityQueueNode<T>> {
   /**
    * Alias for poll. Removes and returns highest priority element.
    */
-  override remove(): T | null {
+  remove(): T | null {
     return this.poll();
   }
 }
